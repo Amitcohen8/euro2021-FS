@@ -1,0 +1,35 @@
+
+
+// .game {
+//     width: 50%;
+// }
+.game-form{
+    width: 50%;
+}
+form{
+    border: solid 1px;
+    padding: 2rem;
+    background-color: #CBD58D;
+    flex-direction: column;
+    div{
+        input{
+            width: 25%;
+            min-width: auto;
+            border: 1px solid;
+        }
+    } 
+}
+
+.form-control{
+    width: 3rem;
+    min-width: auto;
+    border: 1px solid;
+}
+
+
+P {
+    font-weight: bold;
+    margin: 0 0.7rem;
+    text-align: center;
+    width: 6rem;
+}
