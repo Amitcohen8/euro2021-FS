@@ -21,6 +21,26 @@ const knDic = {
     a: { 0:{num:38,side:'home'},
          1:{num:37,side:'home'}
 
+    },
+    b: { 0:{num:40,side:'home'},
+         1:{num:37,side:'away'}
+
+    },
+    c: { 0:{num:39,side:'home'},
+         1:{num:38,side:'away'}
+
+    },
+    d: { 0:{num:43,side:'home'},
+         1:{num:41,side:'home'}
+
+    },
+    e: { 0:{num:44,side:'home'},
+         1:{num:41,side:'away'}
+
+    },
+    f: { 0:{num:42,side:'home'},
+         1:{num:43,side:'away'}
+
     }
 }
 const initial_state = {
@@ -253,14 +273,14 @@ const initial_state = {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: '2A', away: '2B',num:'37' },
-                    { gh: 0, ga: 0, home: '1A', away: '2C',num:'38' },
-                    { gh: 0, ga: 0, home: '1C', away: '3D/E/F',num:'39' },
-                    { gh: 0, ga: 0, home: '1B', away: '3A/D/E/F',num:'40' },
-                    { gh: 0, ga: 0, home: '2D', away: '2E',num:'41' },
-                    { gh: 0, ga: 0, home: '1F', away: '3A/B/C',num:'42' },
-                    { gh: 0, ga: 0, home: '1D', away: '2F',num:'43' },
-                    { gh: 0, ga: 0, home: '1E', away: '3A/B/C/D',num:'44' },
+                    { gh: 0, ga: 0, home: '2A', away: '2B',num:'37',qual:"" },
+                    { gh: 0, ga: 0, home: '1A', away: '2C',num:'38',qual:"" },
+                    { gh: 0, ga: 0, home: '1C', away: '3D/E/F',num:'39',qual:"" },
+                    { gh: 0, ga: 0, home: '1B', away: '3A/D/E/F',num:'40',qual:"" },
+                    { gh: 0, ga: 0, home: '2D', away: '2E',num:'41',qual:"" },
+                    { gh: 0, ga: 0, home: '1F', away: '3A/B/C',num:'42',qual:"" },
+                    { gh: 0, ga: 0, home: '1D', away: '2F',num:'43',qual:"" },
+                    { gh: 0, ga: 0, home: '1E', away: '3A/B/C/D',num:'44',qual:"" },
                 ]
         },
         qf: {
@@ -302,7 +322,7 @@ const scoresReducer = (state = initial_state, action) => {
 
 
             const { index, team, score, side, opponent, gr } = action
-            console.log('gggggg', gr)
+            
             const { games, teams } = currentResults.groups[gr];
 
             if (side === 'h') {
@@ -366,8 +386,16 @@ const scoresReducer = (state = initial_state, action) => {
 
                 if(grReady){
                     const winners = teams.map(item=>item.team).splice(0,2)
-                    // currentResults.groups.r16.results
-                    console.log('winners',winners)
+                    const winnerIdx =  currentResults.groups.r16.results.findIndex(game=>game.num === knDic[gr][0].num.toString())
+                    const runnerUpIdx =  currentResults.groups.r16.results.findIndex(game=>game.num === knDic[gr][1].num.toString())
+        
+                    currentResults.groups.r16.results[winnerIdx][knDic[gr][0].side]= winners[0]
+                    currentResults.groups.r16.results[runnerUpIdx][knDic[gr][1].side]= winners[1]
+                    console.log('indexex',winnerIdx,runnerUpIdx)
+                    console.log('1',currentResults.groups.r16.results[runnerUpIdx])
+                    console.log('2',currentResults.groups.r16.results[winnerIdx])
+                    console.log('3',knDic[gr][1]['num'])
+                    console.log('4',knDic[gr][0][side])
                 }
                 console.log('isReady',grReady)
             }

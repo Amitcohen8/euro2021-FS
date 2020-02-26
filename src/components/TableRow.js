@@ -41,7 +41,7 @@ const TableRow = (props) => {
     return(
 
         <>
-      <tr>  
+      <tr>
       
       <td onClick={()=>console.log('hhhhhhhh',props)}>{props.team}</td>
       <td>{props.p}</td>

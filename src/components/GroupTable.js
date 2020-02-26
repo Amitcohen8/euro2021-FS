@@ -14,12 +14,12 @@ const GroupTable = (props) => {
 
 
 
-  const standingA = teamsA.map((item, index) => <TableRow key={index} {...item} />)
-  const standingB = teamsB.map((item, index) => <TableRow key={index} {...item} />)
-  const standingC = teamsC.map((item, index) => <TableRow key={index} {...item} />)
-  const standingD = teamsD.map((item, index) => <TableRow key={index} {...item} />)
-  const standingE = teamsE.map((item, index) => <TableRow key={index} {...item} />)
-  const standingF = teamsF.map((item, index) => <TableRow key={index} {...item} />)
+  const standingA = teamsA.map((item, index) => <TableRow key={index} {...item} g="A"  />)
+  const standingB = teamsB.map((item, index) => <TableRow key={index} {...item} g="B"/>)
+  const standingC = teamsC.map((item, index) => <TableRow key={index} {...item} g="C" />)
+  const standingD = teamsD.map((item, index) => <TableRow key={index} {...item} g="D"/>)
+  const standingE = teamsE.map((item, index) => <TableRow key={index} {...item} g="E" />)
+  const standingF = teamsF.map((item, index) => <TableRow key={index} {...item} g="F" />)
 
 
   const tableFrame = { border: 'solid', borderColor: '#D2D3CC', borderWidth: '2px' }
@@ -29,6 +29,8 @@ const GroupTable = (props) => {
       <Table striped bordered>
         <thead>
           <tr>
+           
+           
             <th>Team</th>
             <th>P</th>
             <th>W</th>
