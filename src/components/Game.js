@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
-import Header from '../components/Header';
-import GroupTable from './GroupTable';
+
 import './Game.scss'
 import '../App.scss'
 import '../index.css'
 import './SingleGame'
-import { Form, Col, Row } from 'react-bootstrap'
+
 import SingleGame from './SingleGame';
 
 const Games = (props) => {
@@ -16,35 +15,59 @@ const Games = (props) => {
   const resultsD = props.scores.groups.d.results;
   const resultsE = props.scores.groups.e.results;
   const resultsF = props.scores.groups.f.results;
- 
+  const resultsR16 = props.scores.groups.r16.results;
+  const resultsQF = props.scores.groups.qf.results;
+  const resultsSF = props.scores.groups.sf.results;
+  const resultsFinal = props.scores.groups.final.results;
  
 const fixturesA = resultsA.map((team,index)=>{
-  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'a'}/>
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'a'} num={team.num}/>
 })
 const fixturesB = resultsB.map((team,index)=>{
-  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'b'}/>
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'b'} num={team.num}/>
 })
 const fixturesC = resultsC.map((team,index)=>{
-  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'c'}/>
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'c'} num={team.num}/>
 })
 const fixturesD = resultsD.map((team,index)=>{
-  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'d'}/>
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'d'} num={team.num}/>
 })
 const fixturesE = resultsE.map((team,index)=>{
-  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'e'}/>
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'e'} num={team.num}/>
 })
 const fixturesF = resultsF.map((team,index)=>{
-  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'f'}/>
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'f'} num={team.num}/>
+})
+const fixturesR16 = resultsR16.map((team,index)=>{
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'r16'} num={team.num}/>
+})
+const fixturesQF = resultsQF.map((team,index)=>{
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'qf'} num={team.num}/>
+})
+const fixturesSF = resultsSF.map((team,index)=>{
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'sf'} num={team.num}/>
+})
+const fixturesFinal = resultsFinal.map((team,index)=>{
+  return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'final'} num={team.num}/>
 })
   return (
 <div className="game-form">
     <form>
+      <h2>Group stage</h2>
     {fixturesA}
     {fixturesB}
     {fixturesC}
     {fixturesD}
     {fixturesE}
     {fixturesF}
+    <h2>Round of 16</h2>
+    {fixturesR16}
+    <h2>Quarter-Finals</h2>
+    {fixturesQF}
+    <h2>Semi-Finals</h2>
+    {fixturesSF}
+    <h2>Final</h2>
+    {fixturesFinal}
     </form>
     </div>
   )

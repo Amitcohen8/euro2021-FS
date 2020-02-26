@@ -15,6 +15,14 @@ import _ from 'lodash';
 // {team:"",g:0},
 // ]
 // Array(6).fill()
+
+
+const knDic = {
+    a: { 0:{num:38,side:'home'},
+         1:{num:37,side:'home'}
+
+    }
+}
 const initial_state = {
     "groups": {
         a: {
@@ -40,22 +48,22 @@ const initial_state = {
                     "Switzerland": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
                 },
             },
-            teams: [{ team: 'Italy',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-             { team: 'Turkey',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }, 
-             { team: 'Switzerland',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-              { team: 'Wales',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
-            results: 
-            [
-                {gh: 0, ga: 0, home: 'Italy', away: 'Turkey'},
-                {gh: 0, ga: 0, home: 'Wales', away: 'Switzerland'},
-                {gh: 0, ga: 0, home: 'Turkey', away: 'Wales'},
-                {gh: 0, ga: 0, home: 'Italy', away: 'Switzerland'},
-                {gh: 0, ga: 0, home: 'Italy', away: 'Wales'},
-                {gh: 0, ga: 0, home: 'Switzerland', away: 'Turkey'}
-            ],
-           
+            teams: [{ team: 'Italy', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Turkey', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Switzerland', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Wales', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
+            results:
+                [
+                    { gh: 0, ga: 0, home: 'Italy', away: 'Turkey',num:'1' },
+                    { gh: 0, ga: 0, home: 'Wales', away: 'Switzerland',num:'2' },
+                    { gh: 0, ga: 0, home: 'Turkey', away: 'Wales',num:'3' },
+                    { gh: 0, ga: 0, home: 'Italy', away: 'Switzerland',num:'4' },
+                    { gh: 0, ga: 0, home: 'Italy', away: 'Wales',num:'5' },
+                    { gh: 0, ga: 0, home: 'Switzerland', away: 'Turkey',num:'6' }
+                ],
+
         },
-        b:{
+        b: {
             games: {
                 Belgium: {
                     "Denmark": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
@@ -78,19 +86,19 @@ const initial_state = {
                     "Finland": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
                 },
             },
-            teams: [{ team: 'Belgium',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-             { team: 'Denmark',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }, 
-             { team: 'Finland',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-              { team: 'Russia',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
-            results: 
-            [
-                {gh: 0, ga: 0, home: 'Denmark', away: 'Finland'},
-                {gh: 0, ga: 0, home: 'Belgium', away: 'Russia'},
-                {gh: 0, ga: 0, home: 'Finland', away: 'Russia'},
-                {gh: 0, ga: 0, home: 'Denmark', away: 'Belgium'},
-                {gh: 0, ga: 0, home: 'Finland', away: 'Belgium'},
-                {gh: 0, ga: 0, home: 'Russia', away: 'Denmark'}
-            ], 
+            teams: [{ team: 'Belgium', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Denmark', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Finland', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Russia', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
+            results:
+                [
+                    { gh: 0, ga: 0, home: 'Denmark', away: 'Finland',num:'7' },
+                    { gh: 0, ga: 0, home: 'Belgium', away: 'Russia',num:'8' },
+                    { gh: 0, ga: 0, home: 'Finland', away: 'Russia',num:'9' },
+                    { gh: 0, ga: 0, home: 'Denmark', away: 'Belgium',num:'10' },
+                    { gh: 0, ga: 0, home: 'Finland', away: 'Belgium',num:'11' },
+                    { gh: 0, ga: 0, home: 'Russia', away: 'Denmark',num:'12' }
+                ],
         },
         c: {
             games: {
@@ -115,21 +123,21 @@ const initial_state = {
                     "Ukraine": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
                 },
             },
-            teams: [{ team: 'Austria',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-             { team: 'Netherlands',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }, 
-             { team: 'Romania',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-              { team: 'Ukraine',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
-            results: 
-            [
-                {gh: 0, ga: 0, home: 'Austria', away: 'Romania'},
-                {gh: 0, ga: 0, home: 'Netherlands', away: 'Ukraine'},
-                {gh: 0, ga: 0, home: 'Ukraine', away: 'Romania'},
-                {gh: 0, ga: 0, home: 'Netherlands', away: 'Austria'},
-                {gh: 0, ga: 0, home: 'Ukraine', away: 'Austria'},
-                {gh: 0, ga: 0, home: 'Romania', away: 'Netherlands'}
-            ], 
+            teams: [{ team: 'Austria', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Netherlands', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Romania', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Ukraine', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
+            results:
+                [
+                    { gh: 0, ga: 0, home: 'Austria', away: 'Romania',num:'13' },
+                    { gh: 0, ga: 0, home: 'Netherlands', away: 'Ukraine',num:'14' },
+                    { gh: 0, ga: 0, home: 'Ukraine', away: 'Romania',num:'15' },
+                    { gh: 0, ga: 0, home: 'Netherlands', away: 'Austria',num:'16' },
+                    { gh: 0, ga: 0, home: 'Ukraine', away: 'Austria',num:'17' },
+                    { gh: 0, ga: 0, home: 'Romania', away: 'Netherlands',num:'18' }
+                ],
         },
-        d:{
+        d: {
             games: {
                 Croatia: {
                     "Czech Republic": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
@@ -152,21 +160,21 @@ const initial_state = {
                     "England": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
                 },
             },
-            teams: [{ team: 'Croatia',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-             { team: 'Czech Republic',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }, 
-             { team: 'England',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-              { team: 'Norway',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
-            results: 
-            [
-                {gh: 0, ga: 0, home: 'England', away: 'Croatia'},
-                {gh: 0, ga: 0, home: 'Norway', away: 'Czech Republic'},
-                {gh: 0, ga: 0, home: 'Croatia', away: 'Czech Republic'},
-                {gh: 0, ga: 0, home: 'England', away: 'Norway'},
-                {gh: 0, ga: 0, home: 'Czech Republic', away: 'England'},
-                {gh: 0, ga: 0, home: 'Croatia', away: 'Norway'}
-            ], 
+            teams: [{ team: 'Croatia', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Czech Republic', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'England', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Norway', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
+            results:
+                [
+                    { gh: 0, ga: 0, home: 'England', away: 'Croatia',num:'19' },
+                    { gh: 0, ga: 0, home: 'Norway', away: 'Czech Republic',num:'20' },
+                    { gh: 0, ga: 0, home: 'Croatia', away: 'Czech Republic',num:'21' },
+                    { gh: 0, ga: 0, home: 'England', away: 'Norway',num:'22' },
+                    { gh: 0, ga: 0, home: 'Czech Republic', away: 'England',num:'23' },
+                    { gh: 0, ga: 0, home: 'Croatia', away: 'Norway',num:'24' }
+                ],
         },
-        e:{
+        e: {
             games: {
                 Slovakia: {
                     "Poland": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
@@ -189,21 +197,21 @@ const initial_state = {
                     "Spain": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
                 },
             },
-            teams: [{ team: 'Slovakia',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-             { team: 'Poland',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }, 
-             { team: 'Spain',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-              { team: 'Sweden',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
-            results: 
-            [
-                {gh: 0, ga: 0, home: 'Poland', away: 'Slovakia'},
-                {gh: 0, ga: 0, home: 'Spain', away: 'Sweden'},
-                {gh: 0, ga: 0, home: 'Sweden', away: 'Slovakia'},
-                {gh: 0, ga: 0, home: 'Spain', away: 'Poland'},
-                {gh: 0, ga: 0, home: 'Sweden', away: 'Poland'},
-                {gh: 0, ga: 0, home: 'Slovakia', away: 'Spain'}
-            ], 
+            teams: [{ team: 'Slovakia', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Poland', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Spain', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Sweden', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
+            results:
+                [
+                    { gh: 0, ga: 0, home: 'Poland', away: 'Slovakia',num:'25' },
+                    { gh: 0, ga: 0, home: 'Spain', away: 'Sweden',num:'26' },
+                    { gh: 0, ga: 0, home: 'Sweden', away: 'Slovakia',num:'27' },
+                    { gh: 0, ga: 0, home: 'Spain', away: 'Poland',num:'28' },
+                    { gh: 0, ga: 0, home: 'Sweden', away: 'Poland',num:'29' },
+                    { gh: 0, ga: 0, home: 'Slovakia', away: 'Spain',num:'30' }
+                ],
         },
-        f:{
+        f: {
             games: {
                 France: {
                     "Germany": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
@@ -226,21 +234,64 @@ const initial_state = {
                     "Kosovo": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
                 },
             },
-            teams: [{ team: 'France',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-             { team: 'Germany',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }, 
-             { team: 'Kosovo',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-              { team: 'Portugal',p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
-            results: 
-            [
-                {gh: 0, ga: 0, home: 'Kosovo', away: 'Portugal'},
-                {gh: 0, ga: 0, home: 'France', away: 'Germany'},
-                {gh: 0, ga: 0, home: 'Kosovo', away: 'France'},
-                {gh: 0, ga: 0, home: 'Portugal', away: 'Germany'},
-                {gh: 0, ga: 0, home: 'Germany', away: 'Kosovo'},
-                {gh: 0, ga: 0, home: 'Portugal', away: 'France'}
-            ], 
+            teams: [{ team: 'France', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Germany', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Kosovo', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
+            { team: 'Portugal', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
+            results:
+                [
+                    { gh: 0, ga: 0, home: 'Kosovo', away: 'Portugal',num:'31' },
+                    { gh: 0, ga: 0, home: 'France', away: 'Germany',num:'32' },
+                    { gh: 0, ga: 0, home: 'Kosovo', away: 'France',num:'33' },
+                    { gh: 0, ga: 0, home: 'Portugal', away: 'Germany',num:'34' },
+                    { gh: 0, ga: 0, home: 'Germany', away: 'Kosovo',num:'35' },
+                    { gh: 0, ga: 0, home: 'Portugal', away: 'France',num:'36' },
+
+                ],
         },
-        
+        r16: {
+            results:
+                [
+
+                    { gh: 0, ga: 0, home: '2A', away: '2B',num:'37' },
+                    { gh: 0, ga: 0, home: '1A', away: '2C',num:'38' },
+                    { gh: 0, ga: 0, home: '1C', away: '3D/E/F',num:'39' },
+                    { gh: 0, ga: 0, home: '1B', away: '3A/D/E/F',num:'40' },
+                    { gh: 0, ga: 0, home: '2D', away: '2E',num:'41' },
+                    { gh: 0, ga: 0, home: '1F', away: '3A/B/C',num:'42' },
+                    { gh: 0, ga: 0, home: '1D', away: '2F',num:'43' },
+                    { gh: 0, ga: 0, home: '1E', away: '3A/B/C/D',num:'44' },
+                ]
+        },
+        qf: {
+            results:
+                [
+
+                    { gh: 0, ga: 0, home: 'Winner Match 41', away: 'Winner Match 42',num:'45' },
+                    { gh: 0, ga: 0, home: 'Winner Match 39', away: 'Winner Match 37',num:'46' },
+                    { gh: 0, ga: 0, home: 'Winner Match 40', away: 'Winner Match 38',num:'47' },
+                    { gh: 0, ga: 0, home: 'Winner Match 43', away: 'Winner Match 44',num:'48' },
+                ],
+
+        },
+        sf: {
+            results:
+                [
+
+                    { gh: 0, ga: 0, home: 'Winner Match 46', away: 'Winner Match 45',num:'49' },
+                    { gh: 0, ga: 0, home: 'Winner Match 48', away: 'Winner Match 47',num:'50' }
+                    
+                ],
+
+        },
+        final:{results:
+            [
+
+                { gh: 0, ga: 0, home: 'Winner Match 49', away: 'Winner Match 50',num:'51' },
+               
+                
+            ]
+        }
     }
 }
 const scoresReducer = (state = initial_state, action) => {
@@ -248,24 +299,24 @@ const scoresReducer = (state = initial_state, action) => {
         case 'CHANGE_SCORE':
             // console.log('1',state.groups.a.results[index].ga)
             const currentResults = _.cloneDeep(state);
-          
-           
-            const { index, team, score, side, opponent,gr } = action
-           console.log('gggggg',gr)
-            const { games,teams } = currentResults.groups[gr];
-          
+
+
+            const { index, team, score, side, opponent, gr } = action
+            console.log('gggggg', gr)
+            const { games, teams } = currentResults.groups[gr];
+
             if (side === 'h') {
-                currentResults.groups[gr].results[index].gh = score; 
-            } 
+                currentResults.groups[gr].results[index].gh = score;
+            }
             else {
                 currentResults.groups[gr].results[index].ga = score;
-               
+
             }
             let { gh, ga } = currentResults.groups[gr].results[index]
 
-            
+
             const diff = gh - ga;
-           
+
             let balanceT, ptsT, balanceO, ptsO;
             if (diff > 0) {
                 balanceT = 'w';
@@ -304,14 +355,23 @@ const scoresReducer = (state = initial_state, action) => {
 
                 })
                 totalOpponent.team = opponent;
-                const opIndex = teams.findIndex(item=>item.team === opponent)
-                const teamIndex = teams.findIndex(item=>item.team === team)
+                const opIndex = teams.findIndex(item => item.team === opponent)
+                const teamIndex = teams.findIndex(item => item.team === team)
                 teams[opIndex] = totalOpponent;
                 teams[teamIndex] = totalTeam;
-               
-               teams.sort((a,b)=>b.pts-a.pts)
+
+                teams.sort((a, b) => b.pts - a.pts)
+
+                const grReady = teams.every(item=>item.p === 3) //if group is ready should be true
+
+                if(grReady){
+                    const winners = teams.map(item=>item.team).splice(0,2)
+                    // currentResults.groups.r16.results
+                    console.log('winners',winners)
+                }
+                console.log('isReady',grReady)
             }
-           
+
 
             return currentResults
         default:

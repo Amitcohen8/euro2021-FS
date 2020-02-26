@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import './GroupTable.scss'
@@ -29,7 +29,7 @@ const GroupTable = (props) => {
       <Table striped bordered>
         <thead>
           <tr>
-            <th onClick={() => console.log('KKKK', teamsA)}>Team Name</th>
+            <th>Team</th>
             <th>P</th>
             <th>W</th>
             <th>D</th>
