@@ -12,12 +12,16 @@ const GroupTable = (props) => {
   let teamsE = props.scores.groups.e.teams;
   let teamsF = props.scores.groups.f.teams;
 
+  const fullStanding = [...(teamsA.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p))]
+  const thirdplaces = [teamsA[2],teamsB[2],teamsC[2].team,teamsD[2],teamsE[2],teamsF[2]].sort((b,a)=>b.pts-a.pts)
+  
+  const sumOfGames = fullStanding.reduce((tot, num) => tot + num)
 
 
-  const standingA = teamsA.map((item, index) => <TableRow key={index} {...item} g="A"  />)
-  const standingB = teamsB.map((item, index) => <TableRow key={index} {...item} g="B"/>)
+  const standingA = teamsA.map((item, index) => <TableRow key={index} {...item} g="A" />)
+  const standingB = teamsB.map((item, index) => <TableRow key={index} {...item} g="B" />)
   const standingC = teamsC.map((item, index) => <TableRow key={index} {...item} g="C" />)
-  const standingD = teamsD.map((item, index) => <TableRow key={index} {...item} g="D"/>)
+  const standingD = teamsD.map((item, index) => <TableRow key={index} {...item} g="D" />)
   const standingE = teamsE.map((item, index) => <TableRow key={index} {...item} g="E" />)
   const standingF = teamsF.map((item, index) => <TableRow key={index} {...item} g="F" />)
 
@@ -26,12 +30,12 @@ const GroupTable = (props) => {
 
   return (
     <div className="table">
-      <Table striped bordered>
+      <Table striped bordered >
         <thead>
           <tr>
-           
-           
-            <th>Team</th>
+
+
+            <th onClick={() => { sumOfGames === 72 ? console.log('^^^^', thirdplaces) : console.log('fill more') }}>Team</th>
             <th>P</th>
             <th>W</th>
             <th>D</th>

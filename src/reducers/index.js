@@ -41,6 +41,9 @@ const knDic = {
     f: { 0:{num:42,side:'home'},
          1:{num:43,side:'away'}
 
+    },
+    r16: {
+        
     }
 }
 const initial_state = {
@@ -273,24 +276,24 @@ const initial_state = {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: '2A', away: '2B',num:'37',qual:"" },
-                    { gh: 0, ga: 0, home: '1A', away: '2C',num:'38',qual:"" },
-                    { gh: 0, ga: 0, home: '1C', away: '3D/E/F',num:'39',qual:"" },
-                    { gh: 0, ga: 0, home: '1B', away: '3A/D/E/F',num:'40',qual:"" },
-                    { gh: 0, ga: 0, home: '2D', away: '2E',num:'41',qual:"" },
-                    { gh: 0, ga: 0, home: '1F', away: '3A/B/C',num:'42',qual:"" },
-                    { gh: 0, ga: 0, home: '1D', away: '2F',num:'43',qual:"" },
-                    { gh: 0, ga: 0, home: '1E', away: '3A/B/C/D',num:'44',qual:"" },
+                    { gh: 0, ga: 0, home: '2A', away: '2B',num:'37',qual:"",np:'qf' },
+                    { gh: 0, ga: 0, home: '1A', away: '2C',num:'38',qual:"",np:'qf'  },
+                    { gh: 0, ga: 0, home: '1C', away: '3D/E/F',num:'39',qual:"",np:'qf' },
+                    { gh: 0, ga: 0, home: '1B', away: '3A/D/E/F',num:'40',qual:"",np:'qf' },
+                    { gh: 0, ga: 0, home: '2D', away: '2E',num:'41',qual:"",np:'qf' },
+                    { gh: 0, ga: 0, home: '1F', away: '3A/B/C',num:'42',qual:"",np:'qf' },
+                    { gh: 0, ga: 0, home: '1D', away: '2F',num:'43',qual:"",np:'qf' },
+                    { gh: 0, ga: 0, home: '1E', away: '3A/B/C/D',num:'44',qual:"",np:'qf' },
                 ]
         },
         qf: {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: 'Winner Match 41', away: 'Winner Match 42',num:'45' },
-                    { gh: 0, ga: 0, home: 'Winner Match 39', away: 'Winner Match 37',num:'46' },
-                    { gh: 0, ga: 0, home: 'Winner Match 40', away: 'Winner Match 38',num:'47' },
-                    { gh: 0, ga: 0, home: 'Winner Match 43', away: 'Winner Match 44',num:'48' },
+                    { gh: 0, ga: 0, home: 'Winner Match 41', away: 'Winner Match 42',num:'45',np:'sf' },
+                    { gh: 0, ga: 0, home: 'Winner Match 39', away: 'Winner Match 37',num:'46',np:'sf' },
+                    { gh: 0, ga: 0, home: 'Winner Match 40', away: 'Winner Match 38',num:'47',np:'sf' },
+                    { gh: 0, ga: 0, home: 'Winner Match 43', away: 'Winner Match 44',num:'48',np:'sf' },
                 ],
 
         },
@@ -298,8 +301,8 @@ const initial_state = {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: 'Winner Match 46', away: 'Winner Match 45',num:'49' },
-                    { gh: 0, ga: 0, home: 'Winner Match 48', away: 'Winner Match 47',num:'50' }
+                    { gh: 0, ga: 0, home: 'Winner Match 46', away: 'Winner Match 45',num:'49',np:'f' },
+                    { gh: 0, ga: 0, home: 'Winner Match 48', away: 'Winner Match 47',num:'50',np:'f' }
                     
                 ],
 
@@ -319,9 +322,9 @@ const scoresReducer = (state = initial_state, action) => {
         case 'CHANGE_SCORE':
             // console.log('1',state.groups.a.results[index].ga)
             const currentResults = _.cloneDeep(state);
-
-
             const { index, team, score, side, opponent, gr } = action
+
+            
             
             const { games, teams } = currentResults.groups[gr];
 
@@ -332,11 +335,11 @@ const scoresReducer = (state = initial_state, action) => {
                 currentResults.groups[gr].results[index].ga = score;
 
             }
-            let { gh, ga } = currentResults.groups[gr].results[index]
-
+            let { gh, ga,qual,home,away } = currentResults.groups[gr].results[index]
+            
 
             const diff = gh - ga;
-
+            if(gr === 'a' || gr === 'b' || gr === 'c' || gr === 'd' || gr === 'e' || gr === 'f'){
             let balanceT, ptsT, balanceO, ptsO;
             if (diff > 0) {
                 balanceT = 'w';
@@ -391,15 +394,23 @@ const scoresReducer = (state = initial_state, action) => {
         
                     currentResults.groups.r16.results[winnerIdx][knDic[gr][0].side]= winners[0]
                     currentResults.groups.r16.results[runnerUpIdx][knDic[gr][1].side]= winners[1]
-                    console.log('indexex',winnerIdx,runnerUpIdx)
-                    console.log('1',currentResults.groups.r16.results[runnerUpIdx])
-                    console.log('2',currentResults.groups.r16.results[winnerIdx])
-                    console.log('3',knDic[gr][1]['num'])
-                    console.log('4',knDic[gr][0][side])
+                 
                 }
                 console.log('isReady',grReady)
             }
+        }
+if(gr === 'r16' && ga !== null && gh !== null && (side === 'a')){
+    
+    if(diff>0){
+        currentResults.groups[gr].results[index].qual = opponent
+    const num = currentResults.groups[gr].results[index].num
 
+console.log('home', qual)
+    }else{
+        currentResults.groups[gr].results[index].qual = team
+        console.log('away', qual)
+    }
+}
 
             return currentResults
         default:
