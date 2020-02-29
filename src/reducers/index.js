@@ -418,7 +418,12 @@ console.log('home', qual)
     }
 }
 
+// const thirdPlcReducer = (state = initial_state, action) => {
+//     return currentResults
+//     default:
+//         return state
 
+// }
 
 
 

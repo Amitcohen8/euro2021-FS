@@ -13,7 +13,7 @@ const GroupTable = (props) => {
   let teamsF = props.scores.groups.f.teams;
 
   const fullStanding = [...(teamsA.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p))]
-  const thirdplaces = [teamsA[2],teamsB[2],teamsC[2].team,teamsD[2],teamsE[2],teamsF[2]].sort((b,a)=>b.pts-a.pts)
+  const thirdplaces = [teamsA[2],teamsB[2],teamsC[2],teamsD[2],teamsE[2],teamsF[2]].sort((a,b)=>b.pts-a.pts)
   
   const sumOfGames = fullStanding.reduce((tot, num) => tot + num)
 
@@ -23,15 +23,15 @@ const GroupTable = (props) => {
   const standingC = teamsC.map((item, index) => <TableRow key={index} {...item} g="C" />)
   const standingD = teamsD.map((item, index) => <TableRow key={index} {...item} g="D" />)
   const standingE = teamsE.map((item, index) => <TableRow key={index} {...item} g="E" />)
-  const standingF = teamsF.map((item, index) => <TableRow key={index} {...item} g="F" />)
+  const standingF = teamsF.map((item, index) => <TableRow key={index} {...item} g="F"/>)
 
 
-  const tableFrame = { border: 'solid', borderColor: '#D2D3CC', borderWidth: '2px' }
+  const tableFrame = { border: 'solid', borderColor: 'black', borderWidth: '2px' }
 
   return (
     <div className="table">
       <Table striped bordered >
-        <thead>
+        <thead className={tableFrame}>
           <tr>
 
 
