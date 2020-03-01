@@ -46,9 +46,7 @@ const knDic = {
         1: { num: 43, side: 'away' }
 
     },
-    r16: {
-
-    }
+  
 }
 
 
@@ -68,10 +66,12 @@ const thirdPlace = {
     'bcdf': [{num:'39',gr:'d'},{num:'40',gr:'f'},{num:'44',gr:'c'},{num:'42',gr:'b'}],    
     'bcef': [{num:'39',gr:'e'},{num:'40',gr:'f'},{num:'44',gr:'c'},{num:'42',gr:'b'}],   
     'bdef': [{num:'39',gr:'e'},{num:'40',gr:'f'},{num:'44',gr:'d'},{num:'42',gr:'b'}],
-    'cdef': [{num:'39',gr:'e'},{num:'40',gr:'f'},{num:'44',gr:'d'},{num:'42',gr:'c'}] 
+    'cdef': [{num:'39',gr:'e'},{num:'40',gr:'f'},{num:'44',gr:'d'},{num:'42',gr:'c'}],
+    'wxyz': [{num:'39',gr:'w'},{num:'40',gr:'x'},{num:'44',gr:'y'},{num:'42',gr:'z'}]  
     //            {'39':'d','40':'a','44':'b','42':'c'},
     //  'abce':{'39':'e','40':'a','44':'b','42':'c'}  
     }
+
 
 const initial_state = {
     "groups": {

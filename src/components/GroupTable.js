@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import './GroupTable.scss'
@@ -27,6 +27,15 @@ const GroupTable = (props) => {
 
 
   const tableFrame = {  }
+
+  const [fullGroups,setFullGroups] = useState(false)
+
+const array3rdPlaceholder =[{gr:'w',team:'3D/E/F',num:'39'},{gr:'x',team:'3A/D/E/F',num:'40'},{gr:'y',team:'3A/B/C',num:'42'},{gr:'z',team:'3A/B/C/D',num:'44'}]
+// sumOfGames === 72 && !fullGroups ? 
+// props.evalR16(array3rd) 
+// :
+// setFullGroups(true)
+// props.evalR16(array3rdPlaceholder)
 
   return (
     <div className="table ">
