@@ -1,7 +1,30 @@
 .table {
     width: 25%;
     opacity: 0.8;
-    
     // width: 40%;
 }
 
+.standings{
+    background-color: #f5f7fa;
+    width: 95%;
+    margin:0;
+    opacity: 0.8;
+    // margin-bottom: 1em;
+    // margin-top: 1em;
+    padding-top: 2em;
+    padding-bottom: 1.5em;
+    font-weight: bold;
+    // color:#001f3f;
+    font-family: Georgia, sans-serif;
+font-size: 2rem;
+letter-spacing: -2px;
+}
+.table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+    background-color: #f5f7fa;
+ }
+
+ 
+
+ .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: white;
+ }

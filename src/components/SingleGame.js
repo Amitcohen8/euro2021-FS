@@ -6,7 +6,7 @@ const SingleGame = (props) => {
   const awayFlag =  countries[props.away] ? `https://www.countryflags.io/${countries[props.away]}/flat/64.png` : `https://www.countryflags.io/${countries['None']}/flat/64.png`;
   return (
     <div className="form-group d-flex flex-sm-row justify-content-center">
-      {/* <p>{props.num}</p> */}
+      <p>{props.num}</p>
      <p><img src={homeFlag}/></p>
       <p>{props.home}</p>
       <input type="number" min="0" max="9" maxLength="1" className="form-control form-control-sm" onChange={e => {

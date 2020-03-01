@@ -14,28 +14,29 @@ const GroupTable = (props) => {
 
   const fullStanding = [...(teamsA.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p))]
   const thirdplaces = [teamsA[2],teamsB[2],teamsC[2],teamsD[2],teamsE[2],teamsF[2]].sort((a,b)=>b.pts-a.pts)
-  
+  const array3rd = thirdplaces.splice(0,4)
   const sumOfGames = fullStanding.reduce((tot, num) => tot + num)
 
 
-  const standingA = teamsA.map((item, index) => <TableRow key={index} {...item} g="A" />)
-  const standingB = teamsB.map((item, index) => <TableRow key={index} {...item} g="B" />)
-  const standingC = teamsC.map((item, index) => <TableRow key={index} {...item} g="C" />)
-  const standingD = teamsD.map((item, index) => <TableRow key={index} {...item} g="D" />)
-  const standingE = teamsE.map((item, index) => <TableRow key={index} {...item} g="E" />)
-  const standingF = teamsF.map((item, index) => <TableRow key={index} {...item} g="F"/>)
+  const standingA = teamsA.map((item, index) => <TableRow key={index} {...item}  />)
+  const standingB = teamsB.map((item, index) => <TableRow key={index} {...item}  />)
+  const standingC = teamsC.map((item, index) => <TableRow key={index} {...item} />)
+  const standingD = teamsD.map((item, index) => <TableRow key={index} {...item} />)
+  const standingE = teamsE.map((item, index) => <TableRow key={index} {...item}  />)
+  const standingF = teamsF.map((item, index) => <TableRow key={index} {...item} />)
 
 
-  const tableFrame = { border: 'solid', borderColor: 'black', borderWidth: '2px' }
+  const tableFrame = {  }
 
   return (
-    <div className="table">
+    <div className="table ">
+      <h2 className="standings">Standings</h2>
       <Table striped bordered >
         <thead className={tableFrame}>
           <tr>
 
 
-            <th onClick={() => { sumOfGames === 72 ? console.log('^^^^', thirdplaces) : console.log('fill more') }}>Team</th>
+            <th onClick={() => {props.evalR16(array3rd)}}>Team</th>
             <th>P</th>
             <th>W</th>
             <th>D</th>
@@ -48,9 +49,7 @@ const GroupTable = (props) => {
         </thead>
         <>
           <tbody style={tableFrame}>
-
             {standingA}
-
           </tbody>
           <tbody style={tableFrame}>
             {standingB}
@@ -72,11 +71,22 @@ const GroupTable = (props) => {
     </div>
   )
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    // dispatching plain actions
+    evalR16: (arr) => dispatch({
+      type: 'EVAL_R16',
+       arr
+      
+    }),
+   
 
+  }
+}
 const mapStateToProps = (state) => {
 
   return {
     scores: state.scores,
   }
 }
-export default connect(mapStateToProps)(GroupTable)
+export default connect(mapStateToProps,mapDispatchToProps)(GroupTable)
