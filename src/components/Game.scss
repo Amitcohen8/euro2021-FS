@@ -1,5 +1,8 @@
 
 
+
+
+
 // .game {
 //     width: 50%;
 // }
@@ -43,7 +46,10 @@ form{
     border: 1px solid;
     
 }
-
+.form-group{
+    // margin-left:1.5em;
+    text-align: center;
+}
 
 P {
     font-weight: bold;
@@ -79,4 +85,8 @@ input[type=number] {
 .team{
     display: flex;
     
+}
+
+@media screen and (max-width: 769px) {
+
 }

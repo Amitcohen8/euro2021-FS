@@ -6,8 +6,8 @@ const TableRow = (props) => {
   return (
 
     <>
+    
       <tr>
-        
         <td>{props.team}</td>
         <td>{props.p}</td>
         <td>{props.w}</td>

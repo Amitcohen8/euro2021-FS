@@ -6,3 +6,9 @@
     // background-image: url(../assets/ronaldo.png);
     
 }
+
+@media screen and (max-width: 769px) {
+.main{
+    flex-direction: column;
+}
+}

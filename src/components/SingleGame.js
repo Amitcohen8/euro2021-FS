@@ -5,17 +5,19 @@ const SingleGame = (props) => {
   const homeFlag = countries[props.home] ? `https://www.countryflags.io/${countries[props.home]}/flat/64.png` :  `https://www.countryflags.io/${countries['None']}/flat/64.png`;
   const awayFlag =  countries[props.away] ? `https://www.countryflags.io/${countries[props.away]}/flat/64.png` : `https://www.countryflags.io/${countries['None']}/flat/64.png`;
   return (
-    <div className="form-group d-flex flex-sm-row justify-content-start">
+    <div className="form-group d-flex flex-sm-row justify-content-center">
       <p>{props.num}</p>
       <p>{(props.gr).toUpperCase()}</p>
      <p><img src={homeFlag}/></p>
       <p>{props.home}</p>
       <input type="number" min="0" max="9" maxLength="1" className="form-control form-control-sm" onChange={e => {
                                                     props.changeScores(props.index, props.home, Number(e.target.value),'h',props.away,props.gr)
+                                                   props.evalR16()
                                                    }
                                                      }/>
       <input type="number" min="0" max="9" className="form-control form-control-sm" onChange={e => {
       props.changeScores(props.index, props.away, Number(e.target.value),'a',props.home,props.gr)
+      props.evalR16()
      }
       } />
       <p>{props.away}</p>
@@ -36,7 +38,11 @@ const mapDispatchToProps = dispatch => {
      opponent,
      gr
     }),
-   
+    evalR16: () => dispatch({
+      type: 'EVAL_R16',
+      
+
+    }),
 
   }
 }

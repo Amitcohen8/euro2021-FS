@@ -3,22 +3,22 @@ import { combineReducers } from 'redux'
 import _ from 'lodash';
 
 
-const fillTrdPlace = (arr)=>{
+const fillTrdPlace = (arr) => {
     var code = '';
-    
-[...arr].forEach(el => {
-    code += el.gr 
-  
-});
-console.log(code)
 
-return thirdPlace[code]
+    [...arr].forEach(el => {
+        code += el.gr
+
+    });
+    console.log(code)
+
+    return thirdPlace[code]
 }
 const knDic = {
     a: {
         0: { num: 38, side: 'home' },
         1: { num: 37, side: 'home' }
-        
+
 
     },
     b: {
@@ -46,31 +46,44 @@ const knDic = {
         1: { num: 43, side: 'away' }
 
     },
-  
+    '37': { side: 'away', num: '46' },
+    '38': { side: 'away', num: '47' },
+    '39': { side: 'home', num: '46' },
+    '40': { side: 'home', num: '47' },
+    '41': { side: 'home', num: '45' },
+    '42': { side: 'away', num: '45' },
+    '43': { side: 'home', num: '48' },
+    '44': { side: 'away', num: '48' },
+    '45': { side: 'away', num: '49' },
+    '46': { side: 'home', num: '49' },
+    '47': { side: 'away', num: '50' },
+    '48': { side: 'home', num: '50' },
+    '49': { side: 'home', num: '51' },
+    '50': { side: 'away', num: '51' },
 }
 
 
 
 const thirdPlace = {
-    'abcd': [{num:'39',gr:'d'},{num:'40',gr:'a'},{num:'44',gr:'b'},{num:'42',gr:'c'}], 
-    'abce': [{num:'39',gr:'e'},{num:'40',gr:'a'},{num:'44',gr:'b'},{num:'42',gr:'c'}],
-    'abcf': [{num:'39',gr:'f'},{num:'40',gr:'a'},{num:'44',gr:'b'},{num:'42',gr:'c'}], 
-    'abde': [{num:'39',gr:'e'},{num:'40',gr:'d'},{num:'44',gr:'a'},{num:'42',gr:'b'}], 
-    'abdf': [{num:'39',gr:'f'},{num:'40',gr:'d'},{num:'44',gr:'a'},{num:'42',gr:'b'}],    
-    'abef': [{num:'39',gr:'f'},{num:'40',gr:'e'},{num:'44',gr:'b'},{num:'42',gr:'a'}], 
-    'acde': [{num:'39',gr:'d'},{num:'40',gr:'e'},{num:'44',gr:'c'},{num:'42',gr:'a'}], 
-    'acdf': [{num:'39',gr:'d'},{num:'40',gr:'f'},{num:'44',gr:'c'},{num:'42',gr:'a'}], 
-    'acef': [{num:'39',gr:'f'},{num:'40',gr:'e'},{num:'44',gr:'c'},{num:'42',gr:'a'}],
-    'adef': [{num:'39',gr:'f'},{num:'40',gr:'e'},{num:'44',gr:'d'},{num:'42',gr:'a'}],
-    'bcde': [{num:'39',gr:'d'},{num:'40',gr:'e'},{num:'44',gr:'b'},{num:'42',gr:'c'}],    
-    'bcdf': [{num:'39',gr:'d'},{num:'40',gr:'f'},{num:'44',gr:'c'},{num:'42',gr:'b'}],    
-    'bcef': [{num:'39',gr:'e'},{num:'40',gr:'f'},{num:'44',gr:'c'},{num:'42',gr:'b'}],   
-    'bdef': [{num:'39',gr:'e'},{num:'40',gr:'f'},{num:'44',gr:'d'},{num:'42',gr:'b'}],
-    'cdef': [{num:'39',gr:'e'},{num:'40',gr:'f'},{num:'44',gr:'d'},{num:'42',gr:'c'}],
-    'wxyz': [{num:'39',gr:'w'},{num:'40',gr:'x'},{num:'44',gr:'y'},{num:'42',gr:'z'}]  
+    'abcd': [{ num: '39', gr: 'd' }, { num: '40', gr: 'a' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }],
+    'abce': [{ num: '39', gr: 'e' }, { num: '40', gr: 'a' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }],
+    'abcf': [{ num: '39', gr: 'f' }, { num: '40', gr: 'a' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }],
+    'abde': [{ num: '39', gr: 'e' }, { num: '40', gr: 'd' }, { num: '44', gr: 'a' }, { num: '42', gr: 'b' }],
+    'abdf': [{ num: '39', gr: 'f' }, { num: '40', gr: 'd' }, { num: '44', gr: 'a' }, { num: '42', gr: 'b' }],
+    'abef': [{ num: '39', gr: 'f' }, { num: '40', gr: 'e' }, { num: '44', gr: 'b' }, { num: '42', gr: 'a' }],
+    'acde': [{ num: '39', gr: 'd' }, { num: '40', gr: 'e' }, { num: '44', gr: 'c' }, { num: '42', gr: 'a' }],
+    'acdf': [{ num: '39', gr: 'd' }, { num: '40', gr: 'f' }, { num: '44', gr: 'c' }, { num: '42', gr: 'a' }],
+    'acef': [{ num: '39', gr: 'f' }, { num: '40', gr: 'e' }, { num: '44', gr: 'c' }, { num: '42', gr: 'a' }],
+    'adef': [{ num: '39', gr: 'f' }, { num: '40', gr: 'e' }, { num: '44', gr: 'd' }, { num: '42', gr: 'a' }],
+    'bcde': [{ num: '39', gr: 'd' }, { num: '40', gr: 'e' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }],
+    'bcdf': [{ num: '39', gr: 'd' }, { num: '40', gr: 'f' }, { num: '44', gr: 'c' }, { num: '42', gr: 'b' }],
+    'bcef': [{ num: '39', gr: 'e' }, { num: '40', gr: 'f' }, { num: '44', gr: 'c' }, { num: '42', gr: 'b' }],
+    'bdef': [{ num: '39', gr: 'e' }, { num: '40', gr: 'f' }, { num: '44', gr: 'd' }, { num: '42', gr: 'b' }],
+    'cdef': [{ num: '39', gr: 'e' }, { num: '40', gr: 'f' }, { num: '44', gr: 'd' }, { num: '42', gr: 'c' }],
+    'wxyz': [{ num: '39', gr: 'w' }, { num: '40', gr: 'x' }, { num: '44', gr: 'y' }, { num: '42', gr: 'z' }]
     //            {'39':'d','40':'a','44':'b','42':'c'},
     //  'abce':{'39':'e','40':'a','44':'b','42':'c'}  
-    }
+}
 
 
 const initial_state = {
@@ -98,10 +111,10 @@ const initial_state = {
                     "Switzerland": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
                 },
             },
-            teams: [{ team: 'Italy', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0,gr:'a' },
-            { team: 'Turkey', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0,gr:'a' },
-            { team: 'Switzerland', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0,gr:'a' },
-            { team: 'Wales', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0,gr:'a' }],
+            teams: [{ team: 'Italy', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'a' },
+            { team: 'Turkey', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'a' },
+            { team: 'Switzerland', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'a' },
+            { team: 'Wales', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'a' }],
             results:
                 [
                     { gh: 0, ga: 0, home: 'Italy', away: 'Turkey', num: '1' },
@@ -271,7 +284,7 @@ const initial_state = {
                 },
                 "Germany": {
                     "France": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-                    "Kosovo": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0},
+                    "Kosovo": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
                     "Portugal": { p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }
                 },
                 Kosovo: {
@@ -286,9 +299,9 @@ const initial_state = {
                 },
             },
             teams: [{ team: 'France', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-            { team: 'Germany', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0},
+            { team: 'Germany', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
             { team: 'Kosovo', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 },
-            { team: 'Portugal', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0}],
+            { team: 'Portugal', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
             results:
                 [
                     { gh: 0, ga: 0, home: 'Kosovo', away: 'Portugal', num: '31' },
@@ -329,8 +342,8 @@ const initial_state = {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: 'Winner Match 46', away: 'Winner Match 45', num: '49', np: 'f' },
-                    { gh: 0, ga: 0, home: 'Winner Match 48', away: 'Winner Match 47', num: '50', np: 'f' }
+                    { gh: 0, ga: 0, home: 'Winner Match 46', away: 'Winner Match 45', num: '49', np: 'final' },
+                    { gh: 0, ga: 0, home: 'Winner Match 48', away: 'Winner Match 47', num: '50', np: 'final' }
 
                 ],
 
@@ -339,7 +352,7 @@ const initial_state = {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: 'Winner Match 49', away: 'Winner Match 50', num: '51' },
+                    { gh: 0, ga: 0, home: 'Winner Match 49', away: 'Winner Match 50', num: '51','winner':'' },
 
 
                 ]
@@ -427,45 +440,62 @@ const scoresReducer = (state = initial_state, action) => {
                         currentResults.groups.r16.results[runnerUpIdx][knDic[gr][1].side] = winners[1]
 
                     }
-                    console.log('isReady', grReady)
+                    
                 }
             }
-            if (gr === 'r16' && ga !== null && gh !== null && (side === 'a')) {
-let {qual,np,num} = currentResults.groups[gr].results[index]
+            if ((gr === 'r16' || gr === 'qf' || gr === 'sf') && ga !== null && gh !== null && (side === 'a')) {
+                let { qual, np, num } = currentResults.groups[gr].results[index]
+                let { results } = currentResults.groups[np]
                 if (diff > 0) {
                     qual = opponent
-                    num = 
-
-                    console.log('home', qual)
+                } else if (diff < 0) {
+                    qual = team
                 } else {
-                    currentResults.groups[gr].results[index].qual = team
-                    console.log('away', qual)
+                    qual = 'Penalty shootout results'
                 }
+                const nextGame = knDic[num];
+                const gameIdx = results.findIndex(game => game.num === nextGame.num)
+                results[gameIdx][nextGame.side] = qual
+            }
+            if(gr === 'final' && ga !== null && gh !== null && (side === 'a')){
+                let winner = '';
+                if (diff > 0) {
+                    qual = opponent
+                } else if (diff < 0) {
+                    qual = team
+                } else {
+                    qual = 'Penalty shootout results'
+                } 
+                currentResults.groups[gr].results[0].winner = winner
             }
 
             return currentResults
-            case 'EVAL_R16':
-                const currentResult = _.cloneDeep(state);
-                const {arr} = action
-                let {results} = currentResult.groups.r16
-                arr.sort((a, b) => a.gr.localeCompare(b.gr))
-                
-                const fillTrd = fillTrdPlace(arr)
-                fillTrd.forEach(game=>{
-                const resultIdx = results.findIndex(result=>result.num === game.num)
-                console.log('result idx',resultIdx)
-                const teamIdx = arr.findIndex(team=>team.gr === game.gr)
-                console.log('team idx',teamIdx)
-                currentResult.groups.r16.results[resultIdx].away = arr[teamIdx].team
-                
-                console.log('team content',arr[teamIdx].team)
-                console.log('the state',currentResult.groups.r16.results[resultIdx].away)
-                
-                })
-                
-                console.log('3rd',fillTrd)
+        case 'EVAL_R16':
+            const currentResult = _.cloneDeep(state);
+            let [teamsA,teamsB,teamsC,teamsD,teamsE,teamsF] = [currentResult.groups.a.teams,currentResult.groups.b.teams,currentResult.groups.c.teams,currentResult.groups.d.teams,currentResult.groups.e.teams,currentResult.groups.f.teams]
+            const fullStanding = [...(teamsA.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p))]
+            const sumOfGames = fullStanding.reduce((tot, num) => tot + num)
+            if(sumOfGames === 72){
+            const thirdplaces = [teamsA[2], teamsB[2], teamsC[2], teamsD[2], teamsE[2], teamsF[2]].sort((a, b) => b.pts - a.pts)
+            const array3rd = thirdplaces.splice(0, 4)
+            // const { arr } = action
+            let { results } = currentResult.groups.r16
+            array3rd.sort((a, b) => a.gr.localeCompare(b.gr))
 
-                return currentResult
+            const fillTrd = fillTrdPlace(array3rd)
+            fillTrd.forEach(game => {
+                const resultIdx = results.findIndex(result => result.num === game.num)
+                
+                const teamIdx = array3rd.findIndex(team => team.gr === game.gr)
+                currentResult.groups.r16.results[resultIdx].away = array3rd[teamIdx].team
+
+                
+
+            })
+
+            console.log('3rd', fillTrd)
+        }
+            return currentResult
         default:
             return state
     }
