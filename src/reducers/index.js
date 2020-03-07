@@ -1,5 +1,6 @@
 
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import {groupCalc} from '../utils/utils'
 import _ from 'lodash';
 
 
@@ -366,8 +367,6 @@ const scoresReducer = (state = initial_state, action) => {
             const currentResults = _.cloneDeep(state);
             const { index, team, score, side, opponent, gr } = action
 
-
-
             const { games, teams } = currentResults.groups[gr];
 
             if (side === 'h') {
@@ -399,33 +398,43 @@ const scoresReducer = (state = initial_state, action) => {
                     ptsT = 0;
                     ptsO = 3;
                 }
-                if (ga !== null && gh !== null && (side === 'a')) {
+                // if (ga !== null && gh !== null && (side === 'a')) {
+                    if (ga !== null && gh !== null ) {
                     const teamGame = { p: 1, w: balanceT === 'w' ? 1 : 0, d: balanceT === 'd' ? 1 : 0, l: balanceT === 'l' ? 1 : 0, gs: gh, ga: ga, gd: diff, pts: ptsT }
                     const opponentGame = { p: 1, w: balanceO === 'w' ? 1 : 0, d: balanceO === 'd' ? 1 : 0, l: balanceO === 'l' ? 1 : 0, gs: ga, ga: gh, gd: -diff, pts: ptsO }
-                    games[team][opponent] = opponentGame;
-                    games[opponent][team] = teamGame;
-                    let teamsa = Object.keys(games[team])
-                    let totalTeam = {}
+                    
+                    if(side === 'a'){
+                    groupCalc(team,opponent,games,gr,teams,teamGame,opponentGame)}
+                    else if(side ==='h'){
+                        groupCalc(opponent,team,games,gr,teams,teamGame,opponentGame)
+                    }
+                    
+                    
+                    
+                    // games[team][opponent] = opponentGame;
+                    // games[opponent][team] = teamGame;
+                    // let teamsa = Object.keys(games[team])
+                    // let totalTeam = {}
 
-                    Object.keys(games[team][teamsa[0]]).map((a) => {
-                        totalTeam[a] = games[team][teamsa[0]][a] + games[team][teamsa[1]][a] + games[team][teamsa[2]][a]
+                    // Object.keys(games[team][teamsa[0]]).map((a) => {
+                    //     totalTeam[a] = games[team][teamsa[0]][a] + games[team][teamsa[1]][a] + games[team][teamsa[2]][a]
 
-                    })
-                    totalTeam.team = team
-                    totalTeam.gr = gr
+                    // })
+                    // totalTeam.team = team
+                    // totalTeam.gr = gr
 
-                    let teamsh = Object.keys(games[opponent])
-                    var totalOpponent = {}
-                    Object.keys(games[opponent][teamsh[0]]).map((a) => {
-                        totalOpponent[a] = games[opponent][teamsh[0]][a] + games[opponent][teamsh[1]][a] + games[opponent][teamsh[2]][a]
+                    // let teamsh = Object.keys(games[opponent])
+                    // var totalOpponent = {}
+                    // Object.keys(games[opponent][teamsh[0]]).map((a) => {
+                    //     totalOpponent[a] = games[opponent][teamsh[0]][a] + games[opponent][teamsh[1]][a] + games[opponent][teamsh[2]][a]
 
-                    })
-                    totalOpponent.team = opponent;
-                    totalOpponent.gr = gr;
-                    const opIndex = teams.findIndex(item => item.team === opponent)
-                    const teamIndex = teams.findIndex(item => item.team === team)
-                    teams[opIndex] = totalOpponent;
-                    teams[teamIndex] = totalTeam;
+                    // })
+                    // totalOpponent.team = opponent;
+                    // totalOpponent.gr = gr;
+                    // const opIndex = teams.findIndex(item => item.team === opponent)
+                    // const teamIndex = teams.findIndex(item => item.team === team)
+                    // teams[opIndex] = totalOpponent;
+                    // teams[teamIndex] = totalTeam;
 
                     teams.sort((a, b) => b.pts - a.pts)
 
@@ -460,11 +469,11 @@ const scoresReducer = (state = initial_state, action) => {
             if(gr === 'final' && ga !== null && gh !== null && (side === 'a')){
                 let winner = '';
                 if (diff > 0) {
-                    qual = opponent
+                    winner = opponent
                 } else if (diff < 0) {
-                    qual = team
+                    winner = team
                 } else {
-                    qual = 'Penalty shootout results'
+                    winner = 'Penalty shootout results'
                 } 
                 currentResults.groups[gr].results[0].winner = winner
             }

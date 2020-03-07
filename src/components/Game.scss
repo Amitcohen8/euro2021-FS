@@ -86,7 +86,21 @@ input[type=number] {
     display: flex;
     
 }
+.winner{
+    display: flex;
+    justify-content: center;
+    
+    // font-family: Georgia, sans-serif;
+}
 
+.validation-comment{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color:red;
+    width: auto;
+    font-weight: semi-bold;
+}
 @media screen and (max-width: 769px) {
 
 }

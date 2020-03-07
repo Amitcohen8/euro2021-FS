@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-
+import countries from '../utils/countries'
 import './Game.scss'
 import '../App.scss'
 import '../index.css'
@@ -50,10 +50,13 @@ const fixturesSF = resultsSF.map((team,index)=>{
 const fixturesFinal = resultsFinal.map((team,index)=>{
   return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'final'} num={team.num}/>
 })
+
+const {winner} = props.scores.groups.final.results[0];
+const winnerFlag = countries[winner] ? `https://www.countryflags.io/${countries[winner]}/flat/64.png` :  <div/>;
   return (
 <div className="game-form">
     <form>
-      <h2>Group stage</h2>
+    <h2>Group stage</h2>
     {fixturesA}
     {fixturesB}
     {fixturesC}
@@ -68,6 +71,17 @@ const fixturesFinal = resultsFinal.map((team,index)=>{
     {fixturesSF}
     <h2>Final</h2>
     {fixturesFinal}
+    {countries[winner] ? 
+    <>
+    <h2>Winner</h2>
+    <div className="winner">
+    <img src={winnerFlag} alt="winner flag" />
+    <p>{winner}</p>
+    
+    </div>
+    </>
+    : 
+    <div/> }
     </form>
     </div>
   )
