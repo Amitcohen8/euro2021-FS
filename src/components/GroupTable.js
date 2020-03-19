@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import './GroupTable.scss'
+// import './GroupTable.scss'
 import TableRow from './TableRow'
 
 const GroupTable = (props) => {
@@ -39,7 +39,7 @@ const GroupTable = (props) => {
 
   return (
     <div className="table ">
-      <h2 className="standings" onClick={() => { props.evalR16(array3rd) }}>Standings</h2>
+      {/* <h2 className="standings" onClick={() => { props.evalR16(array3rd) }}>Standings</h2> */}
       <Table striped bordered >
         <thead className={tableFrame}>
           <tr >

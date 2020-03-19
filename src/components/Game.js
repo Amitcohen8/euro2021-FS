@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import countries from '../utils/countries'
-import './Game.scss'
+// import './Game.scss'
 import '../App.scss'
 import '../index.css'
 import './SingleGame'
@@ -82,6 +82,7 @@ const winnerFlag = countries[winner] ? `https://www.countryflags.io/${countries[
     </>
     : 
     <div/> }
+    <a>Submit</a>
     </form>
     </div>
   )

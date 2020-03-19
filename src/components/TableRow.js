@@ -1,22 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 const TableRow = (props) => {
-
+  const {team,p,w,d,l,gs,ga,gd,pts} = props
 
   return (
 
     <>
     
       <tr>
-        <td>{props.team}</td>
-        <td>{props.p}</td>
-        <td>{props.w}</td>
-        <td>{props.d}</td>
-        <td>{props.l}</td>
-        <td>{props.gs}</td>
-        <td>{props.ga}</td>
-        <td>{props.gd}</td>
-        <td>{props.pts}</td>
+        <td>{team}</td>
+        <td>{p}</td>
+        <td>{w}</td>
+        <td>{d}</td>
+        <td>{l}</td>
+        <td>{gs}</td>
+        <td>{ga}</td>
+        <td>{gd}</td>
+        <td>{pts}</td>
       </tr>
     </>
   )

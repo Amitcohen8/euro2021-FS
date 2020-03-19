@@ -82,8 +82,7 @@ const thirdPlace = {
     'bdef': [{ num: '39', gr: 'e' }, { num: '40', gr: 'f' }, { num: '44', gr: 'd' }, { num: '42', gr: 'b' }],
     'cdef': [{ num: '39', gr: 'e' }, { num: '40', gr: 'f' }, { num: '44', gr: 'd' }, { num: '42', gr: 'c' }],
     'wxyz': [{ num: '39', gr: 'w' }, { num: '40', gr: 'x' }, { num: '44', gr: 'y' }, { num: '42', gr: 'z' }]
-    //            {'39':'d','40':'a','44':'b','42':'c'},
-    //  'abce':{'39':'e','40':'a','44':'b','42':'c'}  
+    
 }
 
 
@@ -118,12 +117,12 @@ const initial_state = {
             { team: 'Wales', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'a' }],
             results:
                 [
-                    { gh: 0, ga: 0, home: 'Italy', away: 'Turkey', num: '1' },
-                    { gh: 0, ga: 0, home: 'Wales', away: 'Switzerland', num: '2' },
-                    { gh: 0, ga: 0, home: 'Turkey', away: 'Wales', num: '3' },
-                    { gh: 0, ga: 0, home: 'Italy', away: 'Switzerland', num: '4' },
-                    { gh: 0, ga: 0, home: 'Italy', away: 'Wales', num: '5' },
-                    { gh: 0, ga: 0, home: 'Switzerland', away: 'Turkey', num: '6' }
+                    { gh: null, ga: null, home: 'Italy', away: 'Turkey', num: '1' },
+                    { gh: null, ga: null, home: 'Wales', away: 'Switzerland', num: '2' },
+                    { gh: null, ga: null, home: 'Turkey', away: 'Wales', num: '3' },
+                    { gh: null, ga: null, home: 'Italy', away: 'Switzerland', num: '4' },
+                    { gh: null, ga: null, home: 'Italy', away: 'Wales', num: '5' },
+                    { gh: null, ga: null, home: 'Switzerland', away: 'Turkey', num: '6' }
                 ],
 
         },
@@ -157,12 +156,12 @@ const initial_state = {
                 { team: 'Russia', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'b' }],
             results:
                 [
-                    { gh: 0, ga: 0, home: 'Denmark', away: 'Finland', num: '7' },
-                    { gh: 0, ga: 0, home: 'Belgium', away: 'Russia', num: '8' },
-                    { gh: 0, ga: 0, home: 'Finland', away: 'Russia', num: '9' },
-                    { gh: 0, ga: 0, home: 'Denmark', away: 'Belgium', num: '10' },
-                    { gh: 0, ga: 0, home: 'Finland', away: 'Belgium', num: '11' },
-                    { gh: 0, ga: 0, home: 'Russia', away: 'Denmark', num: '12' }
+                    { gh: null, ga: null, home: 'Denmark', away: 'Finland', num: '7' },
+                    { gh: null, ga: null, home: 'Belgium', away: 'Russia', num: '8' },
+                    { gh: null, ga: null, home: 'Finland', away: 'Russia', num: '9' },
+                    { gh: null, ga: null, home: 'Denmark', away: 'Belgium', num: '10' },
+                    { gh: null, ga: null, home: 'Finland', away: 'Belgium', num: '11' },
+                    { gh: null, ga: null, home: 'Russia', away: 'Denmark', num: '12' }
                 ],
         },
         c: {
@@ -194,12 +193,12 @@ const initial_state = {
             { team: 'Ukraine', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'c' }],
             results:
                 [
-                    { gh: 0, ga: 0, home: 'Austria', away: 'Romania', num: '13' },
-                    { gh: 0, ga: 0, home: 'Netherlands', away: 'Ukraine', num: '14' },
-                    { gh: 0, ga: 0, home: 'Ukraine', away: 'Romania', num: '15' },
-                    { gh: 0, ga: 0, home: 'Netherlands', away: 'Austria', num: '16' },
-                    { gh: 0, ga: 0, home: 'Ukraine', away: 'Austria', num: '17' },
-                    { gh: 0, ga: 0, home: 'Romania', away: 'Netherlands', num: '18' }
+                    { gh: null, ga: null, home: 'Austria', away: 'Romania', num: '13' },
+                    { gh: null, ga: null, home: 'Netherlands', away: 'Ukraine', num: '14' },
+                    { gh: null, ga: null, home: 'Ukraine', away: 'Romania', num: '15' },
+                    { gh: null, ga: null, home: 'Netherlands', away: 'Austria', num: '16' },
+                    { gh: null, ga: null, home: 'Ukraine', away: 'Austria', num: '17' },
+                    { gh: null, ga: null, home: 'Romania', away: 'Netherlands', num: '18' }
                 ],
         },
         d: {
@@ -231,12 +230,12 @@ const initial_state = {
             { team: 'Norway', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'd' }],
             results:
                 [
-                    { gh: 0, ga: 0, home: 'England', away: 'Croatia', num: '19' },
-                    { gh: 0, ga: 0, home: 'Norway', away: 'Czech Republic', num: '20' },
-                    { gh: 0, ga: 0, home: 'Croatia', away: 'Czech Republic', num: '21' },
-                    { gh: 0, ga: 0, home: 'England', away: 'Norway', num: '22' },
-                    { gh: 0, ga: 0, home: 'Czech Republic', away: 'England', num: '23' },
-                    { gh: 0, ga: 0, home: 'Croatia', away: 'Norway', num: '24' }
+                    { gh: null, ga: null, home: 'England', away: 'Croatia', num: '19' },
+                    { gh: null, ga: null, home: 'Norway', away: 'Czech Republic', num: '20' },
+                    { gh: null, ga: null, home: 'Croatia', away: 'Czech Republic', num: '21' },
+                    { gh: null, ga: null, home: 'England', away: 'Norway', num: '22' },
+                    { gh: null, ga: null, home: 'Czech Republic', away: 'England', num: '23' },
+                    { gh: null, ga: null, home: 'Croatia', away: 'Norway', num: '24' }
                 ],
         },
         e: {
@@ -268,12 +267,12 @@ const initial_state = {
             { team: 'Sweden', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0, gr: 'e' }],
             results:
                 [
-                    { gh: 0, ga: 0, home: 'Poland', away: 'Slovakia', num: '25' },
-                    { gh: 0, ga: 0, home: 'Spain', away: 'Sweden', num: '26' },
-                    { gh: 0, ga: 0, home: 'Sweden', away: 'Slovakia', num: '27' },
-                    { gh: 0, ga: 0, home: 'Spain', away: 'Poland', num: '28' },
-                    { gh: 0, ga: 0, home: 'Sweden', away: 'Poland', num: '29' },
-                    { gh: 0, ga: 0, home: 'Slovakia', away: 'Spain', num: '30' }
+                    { gh: null, ga: null, home: 'Poland', away: 'Slovakia', num: '25' },
+                    { gh: null, ga: null, home: 'Spain', away: 'Sweden', num: '26' },
+                    { gh: null, ga: null, home: 'Sweden', away: 'Slovakia', num: '27' },
+                    { gh: null, ga: null, home: 'Spain', away: 'Poland', num: '28' },
+                    { gh: null, ga: null, home: 'Sweden', away: 'Poland', num: '29' },
+                    { gh: null, ga: null, home: 'Slovakia', away: 'Spain', num: '30' }
                 ],
         },
         f: {
@@ -305,12 +304,12 @@ const initial_state = {
             { team: 'Portugal', p: 0, w: 0, d: 0, l: 0, gs: 0, ga: 0, gd: 0, pts: 0 }],
             results:
                 [
-                    { gh: 0, ga: 0, home: 'Kosovo', away: 'Portugal', num: '31' },
-                    { gh: 0, ga: 0, home: 'France', away: 'Germany', num: '32' },
-                    { gh: 0, ga: 0, home: 'Kosovo', away: 'France', num: '33' },
-                    { gh: 0, ga: 0, home: 'Portugal', away: 'Germany', num: '34' },
-                    { gh: 0, ga: 0, home: 'Germany', away: 'Kosovo', num: '35' },
-                    { gh: 0, ga: 0, home: 'Portugal', away: 'France', num: '36' },
+                    { gh: null, ga: null, home: 'Kosovo', away: 'Portugal', num: '31' },
+                    { gh: null, ga: null, home: 'France', away: 'Germany', num: '32' },
+                    { gh: null, ga: null, home: 'Kosovo', away: 'France', num: '33' },
+                    { gh: null, ga: null, home: 'Portugal', away: 'Germany', num: '34' },
+                    { gh: null, ga: null, home: 'Germany', away: 'Kosovo', num: '35' },
+                    { gh: null, ga: null, home: 'Portugal', away: 'France', num: '36' },
 
                 ],
         },
@@ -318,24 +317,24 @@ const initial_state = {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: '2A', away: '2B', num: '37', qual: "", np: 'qf' },
-                    { gh: 0, ga: 0, home: '1A', away: '2C', num: '38', qual: "", np: 'qf' },
-                    { gh: 0, ga: 0, home: '1C', away: '3D/E/F', num: '39', qual: "", np: 'qf' },
-                    { gh: 0, ga: 0, home: '1B', away: '3A/D/E/F', num: '40', qual: "", np: 'qf' },
-                    { gh: 0, ga: 0, home: '2D', away: '2E', num: '41', qual: "", np: 'qf' },
-                    { gh: 0, ga: 0, home: '1F', away: '3A/B/C', num: '42', qual: "", np: 'qf' },
-                    { gh: 0, ga: 0, home: '1D', away: '2F', num: '43', qual: "", np: 'qf' },
-                    { gh: 0, ga: 0, home: '1E', away: '3A/B/C/D', num: '44', qual: "", np: 'qf' },
+                    { gh: null, ga: null, home: '2A', away: '2B', num: '37', qual: "", np: 'qf' },
+                    { gh: null, ga: null, home: '1A', away: '2C', num: '38', qual: "", np: 'qf' },
+                    { gh: null, ga: null, home: '1C', away: '3D/E/F', num: '39', qual: "", np: 'qf' },
+                    { gh: null, ga: null, home: '1B', away: '3A/D/E/F', num: '40', qual: "", np: 'qf' },
+                    { gh: null, ga: null, home: '2D', away: '2E', num: '41', qual: "", np: 'qf' },
+                    { gh: null, ga: null, home: '1F', away: '3A/B/C', num: '42', qual: "", np: 'qf' },
+                    { gh: null, ga: null, home: '1D', away: '2F', num: '43', qual: "", np: 'qf' },
+                    { gh: null, ga: null, home: '1E', away: '3A/B/C/D', num: '44', qual: "", np: 'qf' },
                 ]
         },
         qf: {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: 'Winner Match 41', away: 'Winner Match 42', num: '45', np: 'sf' },
-                    { gh: 0, ga: 0, home: 'Winner Match 39', away: 'Winner Match 37', num: '46', np: 'sf' },
-                    { gh: 0, ga: 0, home: 'Winner Match 40', away: 'Winner Match 38', num: '47', np: 'sf' },
-                    { gh: 0, ga: 0, home: 'Winner Match 43', away: 'Winner Match 44', num: '48', np: 'sf' },
+                    { gh: null, ga: null, home: 'Winner Match 41', away: 'Winner Match 42', num: '45', np: 'sf' },
+                    { gh: null, ga: null, home: 'Winner Match 39', away: 'Winner Match 37', num: '46', np: 'sf' },
+                    { gh: null, ga: null, home: 'Winner Match 40', away: 'Winner Match 38', num: '47', np: 'sf' },
+                    { gh: null, ga: null, home: 'Winner Match 43', away: 'Winner Match 44', num: '48', np: 'sf' },
                 ],
 
         },
@@ -343,8 +342,8 @@ const initial_state = {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: 'Winner Match 46', away: 'Winner Match 45', num: '49', np: 'final' },
-                    { gh: 0, ga: 0, home: 'Winner Match 48', away: 'Winner Match 47', num: '50', np: 'final' }
+                    { gh: null, ga: null, home: 'Winner Match 46', away: 'Winner Match 45', num: '49', np: 'final' },
+                    { gh:null, ga:null , home: 'Winner Match 48', away: 'Winner Match 47', num: '50', np: 'final' }
 
                 ],
 
@@ -353,7 +352,7 @@ const initial_state = {
             results:
                 [
 
-                    { gh: 0, ga: 0, home: 'Winner Match 49', away: 'Winner Match 50', num: '51','winner':'' },
+                    { gh: null, ga: null, home: 'Winner Match 49', away: 'Winner Match 50', num: '51','winner':'' },
 
 
                 ]
@@ -363,7 +362,7 @@ const initial_state = {
 const scoresReducer = (state = initial_state, action) => {
     switch (action.type) {
         case 'CHANGE_SCORE':
-            // console.log('1',state.groups.a.results[index].ga)
+           
             const currentResults = _.cloneDeep(state);
             const { index, team, score, side, opponent, gr } = action
 
@@ -378,8 +377,11 @@ const scoresReducer = (state = initial_state, action) => {
             }
             let { gh, ga, qual, home, away } = currentResults.groups[gr].results[index]
 
-
+console.log('gh',gh,'ga',ga)
             const diff = gh - ga;
+            if(ga === null || gh === null){
+                return currentResults
+            }
             if (gr === 'a' || gr === 'b' || gr === 'c' || gr === 'd' || gr === 'e' || gr === 'f') {
                 let balanceT, ptsT, balanceO, ptsO;
                 if (diff > 0) {
@@ -399,7 +401,8 @@ const scoresReducer = (state = initial_state, action) => {
                     ptsO = 3;
                 }
                 // if (ga !== null && gh !== null && (side === 'a')) {
-                    if (ga !== null && gh !== null ) {
+                    
+                    
                     const teamGame = { p: 1, w: balanceT === 'w' ? 1 : 0, d: balanceT === 'd' ? 1 : 0, l: balanceT === 'l' ? 1 : 0, gs: gh, ga: ga, gd: diff, pts: ptsT }
                     const opponentGame = { p: 1, w: balanceO === 'w' ? 1 : 0, d: balanceO === 'd' ? 1 : 0, l: balanceO === 'l' ? 1 : 0, gs: ga, ga: gh, gd: -diff, pts: ptsO }
                     
@@ -411,30 +414,6 @@ const scoresReducer = (state = initial_state, action) => {
                     
                     
                     
-                    // games[team][opponent] = opponentGame;
-                    // games[opponent][team] = teamGame;
-                    // let teamsa = Object.keys(games[team])
-                    // let totalTeam = {}
-
-                    // Object.keys(games[team][teamsa[0]]).map((a) => {
-                    //     totalTeam[a] = games[team][teamsa[0]][a] + games[team][teamsa[1]][a] + games[team][teamsa[2]][a]
-
-                    // })
-                    // totalTeam.team = team
-                    // totalTeam.gr = gr
-
-                    // let teamsh = Object.keys(games[opponent])
-                    // var totalOpponent = {}
-                    // Object.keys(games[opponent][teamsh[0]]).map((a) => {
-                    //     totalOpponent[a] = games[opponent][teamsh[0]][a] + games[opponent][teamsh[1]][a] + games[opponent][teamsh[2]][a]
-
-                    // })
-                    // totalOpponent.team = opponent;
-                    // totalOpponent.gr = gr;
-                    // const opIndex = teams.findIndex(item => item.team === opponent)
-                    // const teamIndex = teams.findIndex(item => item.team === team)
-                    // teams[opIndex] = totalOpponent;
-                    // teams[teamIndex] = totalTeam;
 
                     teams.sort((a, b) => b.pts - a.pts)
 
@@ -450,9 +429,10 @@ const scoresReducer = (state = initial_state, action) => {
 
                     }
                     
-                }
-            }
-            if ((gr === 'r16' || gr === 'qf' || gr === 'sf') && ga !== null && gh !== null && (side === 'a')) {
+                
+            
+        }
+            if ((gr === 'r16' || gr === 'qf' || gr === 'sf') && ga !== null && gh !== null) {
                 let { qual, np, num } = currentResults.groups[gr].results[index]
                 let { results } = currentResults.groups[np]
                 if (diff > 0) {
@@ -477,14 +457,15 @@ const scoresReducer = (state = initial_state, action) => {
                 } 
                 currentResults.groups[gr].results[0].winner = winner
             }
-
+        
+    
             return currentResults
         case 'EVAL_R16':
             const currentResult = _.cloneDeep(state);
             let [teamsA,teamsB,teamsC,teamsD,teamsE,teamsF] = [currentResult.groups.a.teams,currentResult.groups.b.teams,currentResult.groups.c.teams,currentResult.groups.d.teams,currentResult.groups.e.teams,currentResult.groups.f.teams]
             const fullStanding = [...(teamsA.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p))]
             const sumOfGames = fullStanding.reduce((tot, num) => tot + num)
-            if(sumOfGames === 72){
+            // if(sumOfGames === 72){
             const thirdplaces = [teamsA[2], teamsB[2], teamsC[2], teamsD[2], teamsE[2], teamsF[2]].sort((a, b) => b.pts - a.pts)
             const array3rd = thirdplaces.splice(0, 4)
             // const { arr } = action
@@ -503,7 +484,7 @@ const scoresReducer = (state = initial_state, action) => {
             })
 
             console.log('3rd', fillTrd)
-        }
+        // }
             return currentResult
         default:
             return state
