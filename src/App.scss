@@ -113,11 +113,8 @@ margin: 0 1em;
     width:100%;
   }
   div{
-    input{
-        // width: 1em;
+    input {
         min-width: 0.5em;
-        
-        
         border: 1px solid;
         align-self:center;
     }
@@ -152,10 +149,7 @@ margin: 0 1em;
     input{
         width: 1em;
         min-width: auto;
-        margin: 0em;
-        // width:25%;
-        // margin:0;
-        
+        margin: 0em; 
         border: 1px solid;
         align-self:center;
     }
@@ -191,14 +185,7 @@ form {
 
 
 
-// @media (prefers-reduced-motion: no-preference) {
-//   .App-logo {
-//     animation: App-logo-spin infinite 20s linear;
-//   }
-// }
 
-
-//playerform
 .main {
   display: flex;
   // justify-content: space-between; 
@@ -222,14 +209,11 @@ form{
 ;
 
   flex-direction: column;
-  // div{
-  //     input{
-  //         // width: 1em;
-  //         min-width: 0.5em;
-  //         border: 1px solid;
-  //         align-self:center;
-  //     }
-  // } 
+  div{
+      input{
+         font-weight: bold;
+      }
+  } 
 }
 
 .form-control{
@@ -247,22 +231,16 @@ form{
 
 P {
   font-weight: bold;
-  
   text-align: center;
-  // margin: 0 0.7rem;
-  // font-size: 1rem;
-  // width: 6em;
- 
   color:#001f3f;
   align-self: center;
-  // font-family: Georgia, sans-serif;
+ 
 }
 h2{
-  margin-bottom: 1em;
-  margin-top: 1em;
-  font-weight: bold;
-  // color:#001f3f;
-  font-family: Georgia, sans-serif;
+margin-bottom: 1em;
+margin-top: 1em;
+font-weight: bold;
+font-family: Georgia, sans-serif;
 font-size: 2rem;
 letter-spacing: -2px;
 }
@@ -307,9 +285,7 @@ input[type=number] {
   width: auto;
   font-weight: semi-bold;
 }
-@media screen and (max-width: 769px) {
 
-}
 
 
 //Header

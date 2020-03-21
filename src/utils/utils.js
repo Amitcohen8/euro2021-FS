@@ -25,9 +25,17 @@ export const groupCalc = (fstTeam,secTeam,games,gr,teams,teamGame,opponentGame) 
                     teams[teamIndex] = totalTeam;    
 }
 
-// const groupSort = (teams) => {
+export const groupSort = (teams,games) => {
 
-//     teams.every(item=>)
-//     if()
-//     teams.sort((a, b) => b.pts - a.pts)
-// }
+   const sortedTeams =  teams.sort((a, b) => {
+       const teamA = a.team;
+       const teamB = b.team
+       
+      const sorted =  b.pts - a.pts;
+      return sorted
+      console.log('kkkk',sorted)
+    }
+      
+        )
+        console.log('ish',sortedTeams) 
+}
