@@ -381,7 +381,7 @@ const scoresReducer = (state = initial_state, action) => {
                 currentResults.groups[gr].results[gameIndex].ga = score;
 
             }
-            let { gh, ga, qual, home, away } = currentResults.groups[gr].results[gameIndex]
+            let { gh, ga} = currentResults.groups[gr].results[gameIndex]
 
 
             const diff = gh - ga;
@@ -440,7 +440,8 @@ const scoresReducer = (state = initial_state, action) => {
 
             }
             if (gr === 'r16' || gr === 'qf' || gr === 'sf') {
-                let { qual, np, num } = currentResults.groups[gr].results[gameIndex]
+                let {  np, num } = currentResults.groups[gr].results[gameIndex]
+                let qual
                 let { penalty } = currentResults.groups
                 let { results } = currentResults.groups[np]
                 if(penalty[num]===true){penalty[num]=false}
@@ -501,16 +502,22 @@ const scoresReducer = (state = initial_state, action) => {
             return currentResults
         case 'PENALTY':
             let { goal, gameNumber, s, stage } = action;
+
+            console.log('#######',goal,gameNumber,s,stage)
             let pWinner;
             currentResults = _.cloneDeep(state);
             let pIdx = currentResults.groups[stage].results.findIndex(game => game.num === gameNumber);
             const pGame = currentResults.groups[stage].results[pIdx]
-            let { ghP, gaP } = currentResults.groups[stage].results[pIdx].penalty
+            
+             
             s === 'h' ?
-                ghP = goal :
-                gaP = goal;
-            let penaltyResult = ghP - gaP
-            penaltyResult < 0 ?
+            currentResults.groups[stage].results[pIdx].penalty.ghP = goal :
+            currentResults.groups[stage].results[pIdx].penalty.gaP = goal;
+            let penaltyResult = currentResults.groups[stage].results[pIdx].penalty.ghP  - currentResults.groups[stage].results[pIdx].penalty.gaP 
+
+
+            console.log('OOOOO',penaltyResult)
+            penaltyResult > 0 ?
                 pWinner = pGame.home :
                 pWinner = pGame.away
 

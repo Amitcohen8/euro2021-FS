@@ -1,134 +1,179 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux'
-// import './GroupTable.scss'
 import TableRow from './TableRow'
-
+import GroupHeader from './GroupHeader'
 const GroupTable = (props) => {
-  let teamsA = props.scores.groups.a.teams;
-  let teamsB = props.scores.groups.b.teams;
-  let teamsC = props.scores.groups.c.teams;
-  let teamsD = props.scores.groups.d.teams;
-  let teamsE = props.scores.groups.e.teams;
-  let teamsF = props.scores.groups.f.teams;
+  const {a,b,c,d,e,f} = props.scores.groups;
+  let teamsA = a.teams;
+  let teamsB = b.teams;
+  let teamsC = c.teams;
+  let teamsD = d.teams;
+  let teamsE = e.teams;
+  let teamsF = f.teams;
 
-  const fullStanding = [...(teamsA.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p))]
-  const thirdplaces = [teamsA[2], teamsB[2], teamsC[2], teamsD[2], teamsE[2], teamsF[2]].sort((a, b) => b.pts - a.pts)
-  const array3rd = thirdplaces.splice(0, 4)
-  const sumOfGames = fullStanding.reduce((tot, num) => tot + num)
+  // const fullStanding = [...(teamsA.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p)), ...(teamsB.map(e => e.p))]
+  // const thirdplaces = [teamsA[2], teamsB[2], teamsC[2], teamsD[2], teamsE[2], teamsF[2]].sort((a, b) => b.pts - a.pts)
+  // const array3rd = thirdplaces.splice(0, 4)
+  // const sumOfGames = fullStanding.reduce((tot, num) => tot + num)
 
 
-  const standingA = teamsA.map((item, index) => <TableRow key={index} {...item} />)
-  const standingB = teamsB.map((item, index) => <TableRow key={index} {...item} />)
-  const standingC = teamsC.map((item, index) => <TableRow key={index} {...item} />)
-  const standingD = teamsD.map((item, index) => <TableRow key={index} {...item} />)
-  const standingE = teamsE.map((item, index) => <TableRow key={index} {...item} />)
-  const standingF = teamsF.map((item, index) => <TableRow key={index} {...item} />)
+  const standingA = teamsA.map(item => <TableRow key={item.team} {...item} />)
+  const standingB = teamsB.map(item => <TableRow key={item.team} {...item} />)
+  const standingC = teamsC.map(item => <TableRow key={item.team} {...item} />)
+  const standingD = teamsD.map(item => <TableRow key={item.team} {...item} />)
+  const standingE = teamsE.map(item => <TableRow key={item.team} {...item} />)
+  const standingF = teamsF.map(item => <TableRow key={item.team} {...item} />)
 
 
   const tableFrame = {}
-
-  const [fullGroups, setFullGroups] = useState(false)
-
-  const array3rdPlaceholder = [{ gr: 'w', team: '3D/E/F', num: '39' }, { gr: 'x', team: '3A/D/E/F', num: '40' }, { gr: 'y', team: '3A/B/C', num: '42' }, { gr: 'z', team: '3A/B/C/D', num: '44' }]
-  // sumOfGames === 72 && !fullGroups ? 
-  // props.evalR16(array3rd) 
-  // :
-  // setFullGroups(true)
-  // props.evalR16(array3rdPlaceholder)
+  const tableHeader =
+    <tr>
+      <th >Team</th>
+      <th>P</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GS</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Pts</th>
+    </tr>
 
   return (
     <div className="table ">
-      {/* <h2 className="standings" onClick={() => { props.evalR16(array3rd) }}>Standings</h2> */}
+      
       <Table striped bordered >
-        <thead className={tableFrame}>
+<thead className={tableFrame}>
+          <tr >
+            <th colSpan="9">Groups Standings</th>
+          </tr>
+        </thead>
+
+<tbody className={tableFrame}>
+  
+<GroupHeader letter={'A'}/>
+{tableHeader}
+{standingA}
+<GroupHeader letter={'B'}/>
+{tableHeader}
+{standingB}
+<GroupHeader letter={'C'}/>
+{tableHeader}
+{standingC}
+<GroupHeader letter={'D'}/>
+{tableHeader}
+{standingD}
+<GroupHeader letter={'E'}/>
+{tableHeader}
+{standingE}
+<GroupHeader letter={'F'}/>
+{tableHeader}
+{standingF}
+</tbody>
+
+
+
+        {/* <thead className={tableFrame}>
           <tr >
             <th colSpan="9">Group A</th>
           </tr>
-        </thead>
-        
-          <tr>
-            <th >Team</th>
-            <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>GS</th>
-            <th>GA</th>
-            <th>GD</th>
-            <th>Pts</th>
-            </tr>
-          <tbody style={tableFrame}>
-            {standingA}
-          </tbody>
-          <thead className={tableFrame}>
+        </thead> */}
+{/* 
+        <tr>
+          <th >Team</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GS</th>
+          <th>GA</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+        <tbody style={tableFrame}>
+          {standingA}
+        </tbody>
+        <thead className={tableFrame}>
           <tr >
             <th colSpan="9">Group B</th>
           </tr>
         </thead>
-        
-          <tr>
-            <th >Team</th>
-            <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>GS</th>
-            <th>GA</th>
-            <th>GD</th>
-            <th>Pts</th>
-            </tr>
-          <tbody style={tableFrame}>
-            {standingB}
-          </tbody >
-          <thead className={tableFrame}>
+
+        <tr>
+          <th >Team</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GS</th>
+          <th>GA</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+        <tbody style={tableFrame}>
+          {standingB}
+        </tbody >
+        <thead className={tableFrame}>
           <tr >
             <th colSpan="9">Group C</th>
           </tr>
         </thead>
-        
-          <tr>
-            <th >Team</th>
-            <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>GS</th>
-            <th>GA</th>
-            <th>GD</th>
-            <th>Pts</th>
-            </tr>
-          <tbody style={tableFrame}>
-            {standingC}
-          </tbody >
-          <thead className={tableFrame}>
+
+        <tr>
+          <th >Team</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GS</th>
+          <th>GA</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+        <tbody style={tableFrame}>
+          {standingC}
+        </tbody >
+        <thead className={tableFrame}>
           <tr >
             <th colSpan="9">Group D</th>
           </tr>
         </thead>
-        
-          <tr>
-            <th >Team</th>
-            <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>GS</th>
-            <th>GA</th>
-            <th>GD</th>
-            <th>Pts</th>
-            </tr>
-          <tbody style={tableFrame}>
-            {standingD}
-          </tbody >
-          <thead className={tableFrame}>
+
+        <tr>
+          <th >Team</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GS</th>
+          <th>GA</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+        <tbody style={tableFrame}>
+          {standingD}
+        </tbody >
+        <thead className={tableFrame}>
           <tr >
             <th colSpan="9">Group E</th>
           </tr>
         </thead>
-        
+
+        <tr>
+          <th >Team</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GS</th>
+          <th>GA</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+        <tbody style={tableFrame}>
           <tr>
-            <th >Team</th>
+            <th>Team</th>
             <th>P</th>
             <th>W</th>
             <th>D</th>
@@ -137,31 +182,30 @@ const GroupTable = (props) => {
             <th>GA</th>
             <th>GD</th>
             <th>Pts</th>
-            </tr>
-          <tbody style={tableFrame}>
-            {standingE}
-          </tbody >
-          <thead className={tableFrame}>
+          </tr>
+          {standingE}
+        </tbody >
+        <thead className={tableFrame}>
           <tr >
             <th colSpan="9">Group F</th>
           </tr>
         </thead>
-          <tr>
-            
-            <th >Team</th>
-            <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>GS</th>
-            <th>GA</th>
-            <th>GD</th>
-            <th>Pts</th>
-            </tr>
-          <tbody style={tableFrame}>
-            {standingF}
-          </tbody >
-        
+        <tr>
+
+          <th >Team</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GS</th>
+          <th>GA</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+        <tbody style={tableFrame}>
+          {standingF}
+        </tbody > */}
+
       </Table>
     </div>
   )

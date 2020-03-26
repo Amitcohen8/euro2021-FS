@@ -9,19 +9,19 @@ import './SingleGame'
 import SingleGame from './SingleGame';
 
 const Games = (props) => {
-  
-  const resultsA = props.scores.a.results;
-  const resultsB = props.scores.b.results;
-  const resultsC = props.scores.c.results;
-  const resultsD = props.scores.d.results;
-  const resultsE = props.scores.e.results;
-  const resultsF = props.scores.f.results;
+  const {a,b,c,d,e,f,r16,qf,sf,final} = props.scores
+  const resultsA = a.results;
+  const resultsB = b.results;
+  const resultsC = c.results;
+  const resultsD = d.results;
+  const resultsE = e.results;
+  const resultsF = f.results;
   const groupsResults = [...resultsA,...resultsB,...resultsC,...resultsD,...resultsE,...resultsF]
   groupsResults.sort((a,b)=>a.num-b.num)
-  const resultsR16 = props.scores.r16.results;
-  const resultsQF = props.scores.qf.results;
-  const resultsSF = props.scores.sf.results;
-  const resultsFinal = props.scores.final.results;
+  const resultsR16 = r16.results;
+  const resultsQF = qf.results;
+  const resultsSF = sf.results;
+  const resultsFinal = final.results;
  
   const GroupFixtures = groupsResults.map((game)=>{
     return <SingleGame key={game.num} home={game.home} away={game.away}  gr={game.gr} num={game.num}/>

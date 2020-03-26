@@ -5,55 +5,86 @@ import { useState } from 'react'
 const SingleGame = (props) => {
 
 const [input,setInput] = useState({
-  homeInput:"",
-  awayInput:"",
-homeInputP:"",
-awayInputP:""
+  homeInput:'',
+  awayInput:'',
+homeInputP:'',
+awayInputP:''
 })
-const [isValid,setIsValid] = useState({
-  game:true,
-  gamePenalty:true
-} )
-const {game,gamePenalty} = isValid;
-const { homeInput,awayInput,homeInputP,awayInputP } = input;
+
+const [isValidGame,setIsValidG] = useState(true)
+
+
+const { homeInput,awayInput
+  ,homeInputP,awayInputP
+ }
+   = input;
 const {home,away,gr,num,changeScores,penalty,evalR16} = props
-const {results} = props.scores[gr];
+
 const isPenalty = props.scores.penalty[num]
 // const gameIndex = results.findIndex(game=>game.num === props.num);
 // const {isActive} = results[gameIndex].penalty
 const intValidation = "return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));";
 const inputValidation = (e) => {
-if(e.target.value < 0 || e.target.value > 9 || Number.isInteger(e.target.value) || isNaN(e.target.value)){
-setInput({[e.target.name]:""})
-setIsValid({game:false})
+  const {value,name} = e.target
+if(value < 0 || value > 9 || Number.isInteger(value) || isNaN(value)){
+setInput({[name]:''})
+setIsValidG(false)
 } 
 else {
-  if(game === false){setIsValid({game:true})}
-  setInput({[e.target.name]:e.target.value})
+  if(isValidGame === false){setIsValidG(true)}
+  setInput({[name]:value})
 }
 }
 
 const validEmptyString = (e) =>{
-  if(e.target.value === ''){
+  const {value} = e.target
+  if(value === ''){
 return null
   } else {
-    return Number(e.target.value)
+    return Number(value)
   }
 }
 const drawValidation= (e) =>{
-  setInput({[e.target.name]:e.target.value})
-let penaltyScore;
-if(e.target.name === "homeInputP" ){
-  penaltyScore=e.target.value-awayInputP;
-}else{
-  penaltyScore=homeInputP-e.target.value;
-}
+  const {value,name} = e.target
+setInput({[name]:value})
 
-if(penaltyScore === 0 ) {
-  setIsValid({gamePenalty:false})
-setInput({[e.target.name]:""})
-}
-else if(gamePenalty === false) {setIsValid({gamePenalty:true})}
+  // const {value,name} = e.target
+  // let penaltyScore;
+  // if(name === homeInputP){
+  // setHInputP(e.target.value)}else if(name ===awayInputP ){setAInputP(e.target.value)}
+  // penaltyScore=homeInputP-awayInputP
+  // console.log('pppppp',penaltyScore)
+  // if(isValidPenalty === false) {setIsValidP(true)}
+  //   if(isValidDraw === false) {setIsValidD(true)}
+  
+  // if(name === "homeInputP" ){
+  //   penaltyScore=homeInputP-awayInputP;
+
+
+
+  // }else{
+  //   penaltyScore=homeInputP-value;
+  // }
+  // console.log('LLLLLL',input)
+  // if(value < 0 || value > 9 || Number.isInteger(value) || isNaN(value)) {
+  //   setInput({[name]:""})
+  //   setIsValidP(false)
+  //   } 
+    // if(penaltyScore === 0){
+    //   setIsValidD(false)
+    //   setInput({[name]:""})
+
+    // }
+    // else if(penaltyScore !==0 && isValidDraw === false)
+    // setIsValidD(true)
+    // else {
+    //   setInput({[name]:value})
+    // }
+  
+    
+
+
+
 }
   const homeFlag = countries[home] ? `https://www.countryflags.io/${countries[home]}/flat/48.png` :  `https://www.countryflags.io/${countries['None']}/flat/48.png`;
   const awayFlag =  countries[away] ? `https://www.countryflags.io/${countries[away]}/flat/48.png` : `https://www.countryflags.io/${countries['None']}/flat/48.png`;
@@ -63,23 +94,23 @@ else if(gamePenalty === false) {setIsValid({gamePenalty:true})}
     <div className="form-group">
       <p>{num}</p>
       
-     <p><img src={homeFlag}/></p>
+     <p><img src={homeFlag} alt="home team flag"/></p>
       <p>{home}</p>
       
-      <input  type="text" onkeypress={intValidation}  className="form-control home" name="homeInput" value={homeInput}
+      <input type="text" onKeyPress={()=>intValidation}  className="form-control home" name="homeInput" value={homeInput} 
        onChange={e=>{inputValidation(e)}} 
-        onBlur={e => {
-                                                    if(game){ 
+        onBlur={e=> {
+                                                    if(isValidGame){ 
                                                       changeScores(num, home, validEmptyString(e),'h',away,gr)
                                                     evalR16()
                                                     }
                                                    }
                                                      } />
                                                     
-      <input  type="text" onkeypress={intValidation} className="form-control away" name="awayInput" value={awayInput} 
+      <input type="text" onKeyPress={()=>intValidation} className="form-control away" name="awayInput" value={awayInput} 
         onChange={e=>{inputValidation(e)}} 
         onBlur={e => {
-      if(game) { 
+      if(isValidGame) { 
        changeScores(num, away, validEmptyString(e),'a',home,gr)
       evalR16()
        } 
@@ -87,34 +118,43 @@ else if(gamePenalty === false) {setIsValid({gamePenalty:true})}
       } />
     
       <p>{away}</p>
-      <p><img src={awayFlag} alt="flag"/></p>
+      <p><img src={awayFlag} alt="away team flag"/></p>
       <p>{(gr).toUpperCase()}</p>
     </div>
     {isPenalty?
     <div className="form-group">
      <p>Penalty Shootout</p>
-    <p><img src={homeFlag}/></p>
+    <p><img src={homeFlag} alt="home team flag"/></p>
       <p>{home}</p>
       
-    <input type="text" onkeypress={intValidation} className="form-control home" name="homeInputP" value={homeInputP} onChange={e=>{
-     inputValidation(e)
-      drawValidation(e)}}
+    <input type="text" onKeyPress={()=>intValidation} className="form-control home" name="homeInputP" value={homeInputP} onChange={e=>{
+     
+      inputValidation(e)}}
       
-       onBlur={e=>{if(gamePenalty&&game){ penalty(validEmptyString(e),num,'h',gr)}}} autoFocus/>
-    <input type="text" onkeypress={intValidation} className="form-control away" name="awayInputP" value={awayInputP}
-     onChange={e=>{drawValidation(e)
+       onBlur={e=>{
+        if(isValidGame){ 
+          penalty(validEmptyString(e),num,'h',gr)
+       }}} autoFocus/>
+    <input type="text" onKeyPress={()=>intValidation} className="form-control away" name="awayInputP" value={awayInputP}
+     onChange={e=>{
+      
+      
       inputValidation(e)
      }}
-      onBlur={e=>{if(gamePenalty&&game){penalty(validEmptyString(e),num,'a',gr)}}} />
+      onBlur={e=>{
+        if(isValidGame){ 
+        penalty(validEmptyString(e),num,'a',gr)
+        }
+        }} />
     <p>{away}</p>
-    <p><img src={awayFlag} alt="flag"/></p>
+    <p><img src={awayFlag} alt="away team flag"/></p>
     <p>{gr.toUpperCase()}</p>
     </div>
     
      : <div/>
     }
-    {!gamePenalty ? <p className="validation-comment">Penalty score can't be draw</p> : <div/>}
-    {!game ? <p className="validation-comment">The value must be between 0 to 9</p> : <div/>}
+    {/* {!isValidDraw ? <p className="validation-comment">Penalty score can't be draw</p> : <div/>} */}
+    {!isValidGame? <p className="validation-comment">The value must be between 0 to 9</p> : <div/>}
     </>
   )
 }
