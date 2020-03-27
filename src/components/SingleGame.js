@@ -48,43 +48,6 @@ const drawValidation= (e) =>{
   const {value,name} = e.target
 setInput({[name]:value})
 
-  // const {value,name} = e.target
-  // let penaltyScore;
-  // if(name === homeInputP){
-  // setHInputP(e.target.value)}else if(name ===awayInputP ){setAInputP(e.target.value)}
-  // penaltyScore=homeInputP-awayInputP
-  // console.log('pppppp',penaltyScore)
-  // if(isValidPenalty === false) {setIsValidP(true)}
-  //   if(isValidDraw === false) {setIsValidD(true)}
-  
-  // if(name === "homeInputP" ){
-  //   penaltyScore=homeInputP-awayInputP;
-
-
-
-  // }else{
-  //   penaltyScore=homeInputP-value;
-  // }
-  // console.log('LLLLLL',input)
-  // if(value < 0 || value > 9 || Number.isInteger(value) || isNaN(value)) {
-  //   setInput({[name]:""})
-  //   setIsValidP(false)
-  //   } 
-    // if(penaltyScore === 0){
-    //   setIsValidD(false)
-    //   setInput({[name]:""})
-
-    // }
-    // else if(penaltyScore !==0 && isValidDraw === false)
-    // setIsValidD(true)
-    // else {
-    //   setInput({[name]:value})
-    // }
-  
-    
-
-
-
 }
   const homeFlag = countries[home] ? `https://www.countryflags.io/${countries[home]}/flat/48.png` :  `https://www.countryflags.io/${countries['None']}/flat/48.png`;
   const awayFlag =  countries[away] ? `https://www.countryflags.io/${countries[away]}/flat/48.png` : `https://www.countryflags.io/${countries['None']}/flat/48.png`;

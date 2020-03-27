@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter as Router, Route } from "react-router-dom";
+import PlayerResults from './pages/PlayerResults'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -9,7 +11,13 @@ import { createStore } from 'redux';
 const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 ReactDOM.render(
     <Provider store={store}>
-<App />
+    <Router>
+    <>
+      <Route exact path="/" component={App} />
+      <Route path="/results" component={PlayerResults} />
+    </>
+</Router>
+{/* <App /> */}
 </Provider>
 , document.getElementById('root'));
 

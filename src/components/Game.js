@@ -1,22 +1,21 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import { connect } from 'react-redux'
 import countries from '../utils/countries'
-// import './Game.scss'
+import PlayerResults from '../pages/PlayerResults'
+import {allResultsDictionary} from '../utils/utils'
+
 import '../App.scss'
-import '../index.css'
-import './SingleGame'
+
+import { useHistory } from 'react-router-dom';
 
 import SingleGame from './SingleGame';
 
 const Games = (props) => {
   const {a,b,c,d,e,f,r16,qf,sf,final} = props.scores
-  const resultsA = a.results;
-  const resultsB = b.results;
-  const resultsC = c.results;
-  const resultsD = d.results;
-  const resultsE = e.results;
-  const resultsF = f.results;
-  const groupsResults = [...resultsA,...resultsB,...resultsC,...resultsD,...resultsE,...resultsF]
+  const history = useHistory();
+  const groupsResults = [...a.results,...b.results,...c.results,...d.results,...e.results,...f.results]
   groupsResults.sort((a,b)=>a.num-b.num)
   const resultsR16 = r16.results;
   const resultsQF = qf.results;
@@ -26,24 +25,7 @@ const Games = (props) => {
   const GroupFixtures = groupsResults.map((game)=>{
     return <SingleGame key={game.num} home={game.home} away={game.away}  gr={game.gr} num={game.num}/>
   })
-// const fixturesA = resultsA.map((team,index)=>{
-//   return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'a'} num={team.num}/>
-// })
-// const fixturesB = resultsB.map((team,index)=>{
-//   return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'b'} num={team.num}/>
-// })
-// const fixturesC = resultsC.map((team,index)=>{
-//   return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'c'} num={team.num}/>
-// })
-// const fixturesD = resultsD.map((team,index)=>{
-//   return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'d'} num={team.num}/>
-// })
-// const fixturesE = resultsE.map((team,index)=>{
-//   return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'e'} num={team.num}/>
-// })
-// const fixturesF = resultsF.map((team,index)=>{
-//   return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'f'} num={team.num}/>
-// })
+
 const fixturesR16 = resultsR16.map((team,index)=>{
   return <SingleGame key={index} home={team.home} away={team.away} index={index} gr={'r16'} num={team.num}/>
 })
@@ -59,17 +41,33 @@ const fixturesFinal = resultsFinal.map((team,index)=>{
 
 const {winner} = props.scores.final.results[0];
 const winnerFlag = countries[winner] ? `https://www.countryflags.io/${countries[winner]}/flat/64.png` :  <div/>;
+
+const handleSubmit = () => {
+  // ReactDOM.createPortal(<PlayerResults/>, document.getElementById('root'))
+  
+  // window.open('../pages/PlayerResults')
+let allResults = [...a.results,...b.results,...c.results,...d.results,...e.results,...f.results,...r16.results,...qf.results,...sf.results,...final.results,];
+// for(let stage = 0;stage<10;stage++){
+//   allResults = [...allResults,...(allResultsDictionary[stage].results)] 
+let cleanResults = allResults.map(i=>{
+  const {penalty,num,gh,ga} = i;
+  const gaP = penalty ? penalty.gaP : 'N/A';
+  const ghP = penalty ? penalty.ghP : 'N/A';
+  const res = penalty ? {num,gh,ga,ghP,gaP} : {num,gh,ga,ghP:'N/A',gaP:'N/A'}
+  return res
+
+}).sort((a,b) => a.num-b.num)
+
+const isValid = cleanResults.every(game=>game.gh && game.ga)
+if(isValid){history.push("/results");}
+// }
+console.table(cleanResults)
+}
   return (
 <div className="game-form">
     <form>
     <h2>Group stage</h2>
     {GroupFixtures}
-    {/* {fixturesA}
-    {fixturesB}
-    {fixturesC}
-    {fixturesD}
-    {fixturesE}
-    {fixturesF} */}
     <h2>Round of 16</h2>
     {fixturesR16}
     <h2>Quarter-Finals</h2>
@@ -89,7 +87,7 @@ const winnerFlag = countries[winner] ? `https://www.countryflags.io/${countries[
     </>
     : 
     <div/> }
-    <a>Submit</a>
+    <a onClick={()=>{handleSubmit()}}>Submit</a>
     </form>
     </div>
   )

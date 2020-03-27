@@ -503,7 +503,7 @@ const scoresReducer = (state = initial_state, action) => {
         case 'PENALTY':
             let { goal, gameNumber, s, stage } = action;
 
-            console.log('#######',goal,gameNumber,s,stage)
+           
             let pWinner;
             currentResults = _.cloneDeep(state);
             let pIdx = currentResults.groups[stage].results.findIndex(game => game.num === gameNumber);
