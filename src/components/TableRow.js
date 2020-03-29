@@ -1,30 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import countries from '../utils/countries'
+import '../App.scss'
 const TableRow = (props) => {
   const {team,p,w,d,l,gs,ga,gd,pts,results} = props
-  const r16Teams = [];
+  let rowDesign = null;
 results.forEach(item=>{
-if(countries[item.home])r16Teams.push(item.home)
-if(countries[item.away])r16Teams.push(item.away)
-
-  
+  const {away,home} = item;
+if(home === team || away === team){
+rowDesign = "bg-success"
+}
 })
-const isQualified = r16Teams.includes(team)
+
   return (
 
     <>
     
-      <tr className="success">
-        <td onClick={()=>console.log(isQualified)}>{team}</td>
-        <td>{p}</td>
-        <td>{w}</td>
-        <td>{d}</td>
-        <td>{l}</td>
-        <td>{gs}</td>
-        <td>{ga}</td>
-        <td>{gd}</td>
-        <td>{pts}</td>
+      <tr >
+        <td className={rowDesign}>{team}</td>
+        <td className={rowDesign}>{p}</td>
+        <td className={rowDesign}>{w}</td>
+        <td className={rowDesign}>{d}</td>
+        <td className={rowDesign}>{l}</td>
+        <td className={rowDesign}>{gs}</td>
+        <td className={rowDesign}>{ga}</td>
+        <td className={rowDesign}>{gd}</td>
+        <td className={rowDesign}>{pts}</td>
       </tr>
     </>
   )

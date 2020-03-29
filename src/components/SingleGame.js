@@ -55,7 +55,7 @@ setInput({[name]:value})
     <>
     {/* <div className="form-group d-flex flex-sm-row justify-content-center"> */}
     <div className="form-group">
-      <p>{num}</p>
+      <p className="on-mobile">{num}</p>
       
      <p><img src={homeFlag} alt="home team flag"/></p>
       <p>{home}</p>
@@ -82,11 +82,11 @@ setInput({[name]:value})
     
       <p>{away}</p>
       <p><img src={awayFlag} alt="away team flag"/></p>
-      <p>{(gr).toUpperCase()}</p>
+      <p className="on-mobile">{(gr).toUpperCase()}</p>
     </div>
     {isPenalty?
     <div className="form-group">
-     <p>Penalty Shootout</p>
+     <p className="on-mobile">Penalty Shootout</p>
     <p><img src={homeFlag} alt="home team flag"/></p>
       <p>{home}</p>
       
@@ -110,8 +110,8 @@ setInput({[name]:value})
         }
         }} />
     <p>{away}</p>
-    <p><img src={awayFlag} alt="away team flag"/></p>
-    <p>{gr.toUpperCase()}</p>
+    <p ><img src={awayFlag} alt="away team flag"/></p>
+    <p className="on-mobile">{gr.toUpperCase()}</p>
     </div>
     
      : <div/>

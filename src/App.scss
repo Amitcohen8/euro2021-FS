@@ -1,3 +1,20 @@
+P {
+  font-weight: bold;
+  // text-align: center;
+  color:#001f3f;
+  align-self: center;
+ 
+}
+a{
+  // display: inline-block;
+  padding: 0.75em 1.5em;
+  border-radius: 0.75em;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  // background-color: rgb(124, 194, 115);
+  float: right;
+}
 @media screen and (min-width: 320px) and (max-width: 413px) {
  
   .main {
@@ -7,9 +24,10 @@
     width:100%;
   }
   p{
+    // display: none;
     width:3em;
     font-size: 0.625rem;
-    margin: 0 0.5em;
+    margin: 0 1em;
   }
   .table {
     align-self: center;
@@ -21,34 +39,43 @@
     }
 
   }
+  .on-mobile{
+    display: none;
+  }
   form {
-    padding: 1em;
+    padding: 0.25em;
     div{
       input{
-          // width: 1em;
-          max-width: 0.2em;
-          max-height: 0.2em;
-         
-          // width: 0.2em;
-          // width: 0.5em;
           
+          max-width: 2em;
+          max-height: 2em;
           border: 1px solid;
           align-self:center;
       }
+      
   } 
+  a{
+    // display: inline-block;
+    // padding: 0.75em 1.5em;
+    // border-radius: 0.75em;
+    font-size: 0.8rem;
+   
+  }
   }
   .form-group{
     justify-content: center;
   }
   img{
-    width:2em;
+    width:3em;
 margin: 0 1em;
   }
   .home{
-    margin-left:1em;
+    margin-left:2em;
+    float: left;
   }
   .away{
-    margin-right:1em;
+    margin-right:2em;
+    float:right;
   }
 }
 
@@ -74,6 +101,9 @@ margin: 0 1em;
     width:3em;
     font-size: 0.75rem;
     margin: 0 1.2em;
+  }
+  .on-mobile{
+    display: none;
   }
   form {
     padding: 1em;
@@ -182,7 +212,9 @@ form {
 
 
 }
-
+.bg-success{
+  font-weight: 500;
+}
 
 
 
@@ -221,16 +253,7 @@ a:hover{
 a:active{
   background: #57a957;
 }
-a{
-  // display: inline-block;
-  padding: 0.75em 1.5em;
-  border-radius: 0.75em;
-  font-size: 1.2rem;
-  font-weight: 500;
-  cursor: pointer;
-  // background-color: rgb(124, 194, 115);
-  float: right;
-}
+
   flex-direction: column;
   div{
       input{
@@ -242,7 +265,7 @@ a{
 
 .form-control{
   width: 3rem;
-  min-width: auto;
+  min-width: 2em;
   border: 1px solid;
   
 }
@@ -250,16 +273,10 @@ a{
   display:flex;
   // justify-content: center;
   // margin-left:1.5em;
-  text-align: center;
+  // text-align: center;
 }
 
-P {
-  font-weight: bold;
-  text-align: center;
-  color:#001f3f;
-  align-self: center;
- 
-}
+
 h2{
 margin-bottom: 1em;
 margin-top: 1em;
@@ -268,20 +285,7 @@ font-family: Georgia, sans-serif;
 font-size: 2rem;
 letter-spacing: -2px;
 }
-.a{
-  // width:auto;
-  // float: right;
-  display: inline-block;
-  justify-content: flex-end;
-  background-color: blue;
-  margin-left: auto;
-  // margin-right:0;
-  // text-align: right;
-  // margin-right: 0.5em;
-  // align-self: flex-end;
-  padding: 1em;
-  border-radius: 0.5em;
-}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   /* display: none; <- Crashes Chrome on hover */
