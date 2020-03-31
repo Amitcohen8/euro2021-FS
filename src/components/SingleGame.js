@@ -7,15 +7,15 @@ const SingleGame = (props) => {
 const [input,setInput] = useState({
   homeInput:'',
   awayInput:'',
-homeInputP:'',
 awayInputP:''
 })
+const [homeInputP,setItMotherFucker]= useState('')
 
 const [isValidGame,setIsValidG] = useState(true)
+const [isDraw,setIsDraw] = useState(false)
 
-
-const { homeInput,awayInput
-  ,homeInputP,awayInputP
+const { awayInput
+  ,homeInput,awayInputP
  }
    = input;
 const {home,away,gr,num,changeScores,penalty,evalR16} = props
@@ -44,9 +44,26 @@ return null
     return Number(value)
   }
 }
-const drawValidation= (e) =>{
+const drawValidation= (e,side) =>{
+  
   const {value,name} = e.target
-setInput({[name]:value})
+  if(side === 'h'){
+  setItMotherFucker(value)
+  } else{
+  let score = Number(homeInputP)-Number(value);
+  console.log('score',homeInputP)
+  
+  
+   if(score === 0){
+     console.log('draw')
+     setIsDraw(true)
+   } else{
+    setIsDraw(false)
+   }
+    
+  }
+  
+  
 
 }
   const homeFlag = countries[home] ? `https://www.countryflags.io/${countries[home]}/flat/48.png` :  `https://www.countryflags.io/${countries['None']}/flat/48.png`;
@@ -58,10 +75,12 @@ setInput({[name]:value})
       <p className="on-mobile">{num}</p>
       
      <p><img src={homeFlag} alt="home team flag"/></p>
-      <p>{home}</p>
+      <p className="home-team">{home}</p>
       
       <input type="text" onKeyPress={()=>intValidation}  className="form-control home" name="homeInput" value={homeInput} 
-       onChange={e=>{inputValidation(e)}} 
+       onChange={e=>{inputValidation(e)
+        
+       }} 
         onBlur={e=> {
                                                     if(isValidGame){ 
                                                       changeScores(num, home, validEmptyString(e),'h',away,gr)
@@ -71,7 +90,10 @@ setInput({[name]:value})
                                                      } />
                                                     
       <input type="text" onKeyPress={()=>intValidation} className="form-control away" name="awayInput" value={awayInput} 
-        onChange={e=>{inputValidation(e)}} 
+        onChange={e=>{inputValidation(e)
+          
+        
+        }} 
         onBlur={e => {
       if(isValidGame) { 
        changeScores(num, away, validEmptyString(e),'a',home,gr)
@@ -80,7 +102,7 @@ setInput({[name]:value})
      }
       } />
     
-      <p>{away}</p>
+      <p className="away-team">{away}</p>
       <p><img src={awayFlag} alt="away team flag"/></p>
       <p className="on-mobile">{(gr).toUpperCase()}</p>
     </div>
@@ -88,10 +110,10 @@ setInput({[name]:value})
     <div className="form-group">
      <p className="on-mobile">Penalty Shootout</p>
     <p><img src={homeFlag} alt="home team flag"/></p>
-      <p>{home}</p>
+      <p className="home-team">{home}</p>
       
     <input type="text" onKeyPress={()=>intValidation} className="form-control home" name="homeInputP" value={homeInputP} onChange={e=>{
-     
+      drawValidation(e,'h')
       inputValidation(e)}}
       
        onBlur={e=>{
@@ -101,22 +123,22 @@ setInput({[name]:value})
     <input type="text" onKeyPress={()=>intValidation} className="form-control away" name="awayInputP" value={awayInputP}
      onChange={e=>{
       
-      
+      drawValidation(e,'a')
       inputValidation(e)
      }}
       onBlur={e=>{
-        if(isValidGame){ 
+        if(isValidGame && !isDraw){ 
         penalty(validEmptyString(e),num,'a',gr)
         }
         }} />
-    <p>{away}</p>
+    <p className="away-team">{away}</p>
     <p ><img src={awayFlag} alt="away team flag"/></p>
     <p className="on-mobile">{gr.toUpperCase()}</p>
     </div>
     
      : <div/>
     }
-    {/* {!isValidDraw ? <p className="validation-comment">Penalty score can't be draw</p> : <div/>} */}
+    {isDraw ? <p className="validation-comment">Penalty score can't be a draw</p> : <div/>}
     {!isValidGame? <p className="validation-comment">The value must be between 0 to 9</p> : <div/>}
     </>
   )
