@@ -139,7 +139,10 @@ const mapDispatchToProps = dispatch => {
     }),
     penalty: (goal,gameNumber,s,stage) => dispatch({
       type: 'PENALTY',
-      goal,gameNumber,s,stage
+      goal,
+      gameNumber,
+      s,
+      stage
     }),
 
   }

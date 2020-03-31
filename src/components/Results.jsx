@@ -23,15 +23,15 @@ const Results = (props) => {
 
         
         return(
-            <div className="score" key={num}>
-            <p><img src={homeFlag} alt="home team flag"/></p>
+      <div className="score" key={num}>
+      <p><img src={homeFlag} alt="home team flag"/></p>
       <p>{home}</p>
       <p >{gh}</p>
       <p >-</p>
       <p >{ga}</p>                                           
       <p>{away}</p>
       <p><img src={awayFlag} alt="away team flag"/></p>
-            </div>
+      </div>
         )
     })
     

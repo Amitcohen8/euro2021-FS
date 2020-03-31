@@ -1,89 +1,16 @@
 
 import { combineReducers } from 'redux';
-import { groupCalc, groupSort,thirdPlaceSort,r16PlaceHolder } from '../utils/utils'
+import { groupCalc, groupSort,thirdPlaceSort,knoutPlaceHolder,fillTrdPlace,knDic } from '../utils/utils'
 import _ from 'lodash';
-let currentResults
+let currentResults;
 
-const fillTrdPlace = (arr) => {
-    var code = '';
-
-    [...arr].forEach(el => {
-        code += el.gr
-
-    });
-
-console.log('fill_third_place',code,thirdPlace[code]) 
-    return (thirdPlace[code])
-}
-const knDic = {
-    a: {
-        0: { num: 38, side: 'home' },
-        1: { num: 37, side: 'home' }
-
-
-    },
-    b: {
-        0: { num: 40, side: 'home' },
-        1: { num: 37, side: 'away' }
-
-    },
-    c: {
-        0: { num: 39, side: 'home' },
-        1: { num: 38, side: 'away' }
-
-    },
-    d: {
-        0: { num: 43, side: 'home' },
-        1: { num: 41, side: 'home' }
-
-    },
-    e: {
-        0: { num: 44, side: 'home' },
-        1: { num: 41, side: 'away' }
-
-    },
-    f: {
-        0: { num: 42, side: 'home' },
-        1: { num: 43, side: 'away' }
-
-    },
-    '37': { side: 'away', num: '46' },
-    '38': { side: 'away', num: '47' },
-    '39': { side: 'home', num: '46' },
-    '40': { side: 'home', num: '47' },
-    '41': { side: 'home', num: '45' },
-    '42': { side: 'away', num: '45' },
-    '43': { side: 'home', num: '48' },
-    '44': { side: 'away', num: '48' },
-    '45': { side: 'away', num: '49' },
-    '46': { side: 'home', num: '49' },
-    '47': { side: 'away', num: '50' },
-    '48': { side: 'home', num: '50' },
-    '49': { side: 'home', num: '51' },
-    '50': { side: 'away', num: '51' },
-}
+const {r16} = knoutPlaceHolder;
 
 
 
-const thirdPlace = {
-    'abcd': [{ num: '39', gr: 'd' }, { num: '40', gr: 'a' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }],
-    'abce': [{ num: '39', gr: 'e' }, { num: '40', gr: 'a' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }],
-    'abcf': [{ num: '39', gr: 'f' }, { num: '40', gr: 'a' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }],
-    'abde': [{ num: '39', gr: 'e' }, { num: '40', gr: 'd' }, { num: '44', gr: 'a' }, { num: '42', gr: 'b' }],
-    'abdf': [{ num: '39', gr: 'f' }, { num: '40', gr: 'd' }, { num: '44', gr: 'a' }, { num: '42', gr: 'b' }],
-    'abef': [{ num: '39', gr: 'f' }, { num: '40', gr: 'e' }, { num: '44', gr: 'b' }, { num: '42', gr: 'a' }],
-    'acde': [{ num: '39', gr: 'd' }, { num: '40', gr: 'e' }, { num: '44', gr: 'c' }, { num: '42', gr: 'a' }],
-    'acdf': [{ num: '39', gr: 'd' }, { num: '40', gr: 'f' }, { num: '44', gr: 'c' }, { num: '42', gr: 'a' }],
-    'acef': [{ num: '39', gr: 'f' }, { num: '40', gr: 'e' }, { num: '44', gr: 'c' }, { num: '42', gr: 'a' }],
-    'adef': [{ num: '39', gr: 'f' }, { num: '40', gr: 'e' }, { num: '44', gr: 'd' }, { num: '42', gr: 'a' }],
-    'bcde': [{ num: '39', gr: 'd' }, { num: '40', gr: 'e' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }],
-    'bcdf': [{ num: '39', gr: 'd' }, { num: '40', gr: 'f' }, { num: '44', gr: 'c' }, { num: '42', gr: 'b' }],
-    'bcef': [{ num: '39', gr: 'e' }, { num: '40', gr: 'f' }, { num: '44', gr: 'c' }, { num: '42', gr: 'b' }],
-    'bdef': [{ num: '39', gr: 'e' }, { num: '40', gr: 'f' }, { num: '44', gr: 'd' }, { num: '42', gr: 'b' }],
-    'cdef': [{ num: '39', gr: 'e' }, { num: '40', gr: 'f' }, { num: '44', gr: 'd' }, { num: '42', gr: 'c' }],
-    // 'wxyz': [{ num: '39', gr: 'w' }, { num: '40', gr: 'x' }, { num: '44', gr: 'y' }, { num: '42', gr: 'z' }]
 
-}
+
+
 
 
 const initial_state = {
@@ -409,8 +336,8 @@ const scoresReducer = (state = initial_state, action) => {
                 // if (ga !== null && gh !== null && (side === 'a')) {
 
 
-                let teamGame = { p: 1, w: balanceT === 'w' ? 1 : 0, d: balanceT === 'd' ? 1 : 0, l: balanceT === 'l' ? 1 : 0, gs: gh, ga: ga, gd: diff, pts: ptsT }
-                let opponentGame = { p: 1, w: balanceO === 'w' ? 1 : 0, d: balanceO === 'd' ? 1 : 0, l: balanceO === 'l' ? 1 : 0, gs: ga, ga: gh, gd: -diff, pts: ptsO }
+                let teamGame = { p: 1, w: balanceT === 'w' ? 1 : 0, d: balanceT === 'd' ? 1 : 0, l: balanceT === 'l' ? 1 : 0, gs: gh, ga: ga, gd: diff, pts: ptsT}
+                let opponentGame = { p: 1, w: balanceO === 'w' ? 1 : 0, d: balanceO === 'd' ? 1 : 0, l: balanceO === 'l' ? 1 : 0, gs: ga, ga: gh, gd: -diff, pts: ptsO}
 if (ga === null || gh === null) {
                teamGame = opponentGame = { p: 0, w:0, d:0, l:0, gs:0, ga: 0, gd: 0, pts: 0 }
             }
@@ -422,10 +349,8 @@ if (ga === null || gh === null) {
                 }
 
 
-
-
-                // teams.sort((a, b) => b.pts - a.pts)
-                 teams = groupSort(teams,games)
+               
+                 teams = groupSort(teams,games) // sort the groups according to UEFA Rules
 
                  let r16Results = currentResults.groups.r16.results;
                 const grReady = teams.every(item => item.p === 3) //if group is ready should be true
@@ -433,16 +358,14 @@ if (ga === null || gh === null) {
                 const runnerUpIdx = r16Results.findIndex(game => game.num === knDic[gr][1].num.toString())
                 if (grReady) {
                     const winners = teams.map(item => item.team).splice(0, 2)
-                    
-
                     r16Results[winnerIdx][knDic[gr][0].side] = winners[0]
                     r16Results[runnerUpIdx][knDic[gr][1].side] = winners[1]
 
                 }else {
-                   const winnerPlHolderIdx =  r16PlaceHolder.findIndex(game=>game.num === knDic[gr][0].num.toString())
-                   const runnerUpPlHolderIdx = r16PlaceHolder.findIndex(game=>game.num === knDic[gr][1].num.toString())
-                   r16Results[winnerIdx][knDic[gr][0].side] = r16PlaceHolder[winnerPlHolderIdx][knDic[gr][0].side]
-                    r16Results[runnerUpIdx][knDic[gr][1].side] = r16PlaceHolder[runnerUpPlHolderIdx][knDic[gr][1].side]
+                   const winnerPlHolderIdx =  r16.findIndex(game=>game.num === knDic[gr][0].num.toString())
+                   const runnerUpPlHolderIdx = r16.findIndex(game=>game.num === knDic[gr][1].num.toString())
+                   r16Results[winnerIdx][knDic[gr][0].side] = r16[winnerPlHolderIdx][knDic[gr][0].side]
+                    r16Results[runnerUpIdx][knDic[gr][1].side] = r16[runnerUpPlHolderIdx][knDic[gr][1].side]
                 }
 
 
@@ -458,14 +381,18 @@ if (ga === null || gh === null) {
                     qual = opponent
                 } else if (diff < 0) {
                     qual = team
-                } else {
+                } else if(diff === 0 && (ga !== null && gh !== null)) {
                     
                     penalty[num] = true
                     return currentResults
                 }
                 const nextGame = knDic[num];
                 const gameIdx = results.findIndex(game => game.num === nextGame.num)
-                results[gameIdx][nextGame.side] = qual
+                if(ga === null || gh === null){
+                    results[gameIdx][nextGame.side] = knoutPlaceHolder[np][gameIdx][nextGame.side]
+                }
+                else{results[gameIdx][nextGame.side] = qual}
+
             }
             if (gr === 'final' && ga !== null && gh !== null && (side === 'a')) {
                 let winner = '';
@@ -503,7 +430,7 @@ const tmsF = [...currentResults.groups.f.teams] ;
 const allGroupsResults = [...tmsA,...tmsB,...tmsC,...tmsD,...tmsE,...tmsF];
 const evalR16 = allGroupsResults.every(line=>line.p===3)
 console.log('ggg',evalR16)      
-if(!evalR16)  {return currentResults} 
+
            
 let fillTrd = fillTrdPlace(array3rd)//[{ num: '39', gr: 'd' }, { num: '40', gr: 'a' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }]
 
@@ -511,11 +438,16 @@ if(fillTrd !== undefined){
 fillTrd.forEach(game => {
                 const resultIdx = results.findIndex(result => result.num === game.num)
                 const teamIdx = array3rd.findIndex(team => team.gr === game.gr)
-                currentResults.groups.r16.results[resultIdx].away = array3rd[teamIdx].team
 
+                if(!evalR16)  {
+                    currentResults.groups.r16.results[resultIdx].away = r16[resultIdx].away;
+                    return currentResults
+                } else {
+                currentResults.groups.r16.results[resultIdx].away = array3rd[teamIdx].team
+                }
             })
         }
-
+    
             
             return currentResults
         case 'PENALTY':

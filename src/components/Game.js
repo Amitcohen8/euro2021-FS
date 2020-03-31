@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import { connect } from 'react-redux'
@@ -14,6 +14,7 @@ import SingleGame from './SingleGame';
 
 const Games = (props) => {
   const {a,b,c,d,e,f,r16,qf,sf,final} = props.scores
+  const [submitValidation,setSubmitVal] = useState([])
   const history = useHistory();
   const groupsResults = [...a.results,...b.results,...c.results,...d.results,...e.results,...f.results]
   groupsResults.sort((a,b)=>a.num-b.num)
@@ -50,7 +51,11 @@ let allResults = [...a.results,...b.results,...c.results,...d.results,...e.resul
 // for(let stage = 0;stage<10;stage++){
 //   allResults = [...allResults,...(allResultsDictionary[stage].results)] 
 let cleanResults = allResults.map(i=>{
+
   const {penalty,num,gh,ga} = i;
+  if(ga === null || gh === null && (submitValidation.length < 10)){
+    setSubmitVal(prevState=>[...prevState,num])
+  }
   const gaP = penalty ? penalty.gaP : 'N/A';
   const ghP = penalty ? penalty.ghP : 'N/A';
   const res = penalty ? {num,gh,ga,ghP,gaP} : {num,gh,ga,ghP:'N/A',gaP:'N/A'}
@@ -88,6 +93,7 @@ console.table(cleanResults)
     : 
     <div/> }
     <a onClick={()=>{handleSubmit()}}>Submit</a>
+    <div>{submitValidation.length > 45 ? `please fix games numbers ${submitValidation.map(item=>`${item}`)}`:<div/>}</div>
     </form>
     </div>
   )

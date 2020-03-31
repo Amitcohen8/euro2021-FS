@@ -4,15 +4,21 @@
 }
 .results{
   // width: 50%;
+  background-color: #f5f7fa;
   display: flex;
   align-items: center;
-  // justify-content: center;
+  justify-content: center;
   flex-direction: column ;
 }
 .score{
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  margin: auto;
+  
+  font-weight: bold;
   p{
-    font-size: 1rem;
+    font-size: 2rem;
+    color: black;
   }
+
 }
