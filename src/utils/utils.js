@@ -56,7 +56,7 @@ export const groupSort = (teams, games) => {
         else if (wins !== 0) {
             return wins
         }
-
+return null
     }
 
     )
@@ -83,7 +83,7 @@ export const thirdPlaceSort = (teams) => {
         else if (wins !== 0) {
             return wins
         }
-        
+        return null
 })
 
 return sortedTeams.splice(0,4)

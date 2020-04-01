@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import countries from '../utils/countries'
 import '../App.scss'
 const TableRow = (props) => {
   const {team,p,w,d,l,gs,ga,gd,pts,results} = props

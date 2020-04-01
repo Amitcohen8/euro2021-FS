@@ -428,10 +428,7 @@ const tmsD = [...currentResults.groups.d.teams] ;
 const tmsE = [...currentResults.groups.e.teams] ;
 const tmsF = [...currentResults.groups.f.teams] ;
 const allGroupsResults = [...tmsA,...tmsB,...tmsC,...tmsD,...tmsE,...tmsF];
-const evalR16 = allGroupsResults.every(line=>line.p===3)
-console.log('ggg',evalR16)      
-
-           
+const evalR16 = allGroupsResults.every(line=>line.p===3)   
 let fillTrd = fillTrdPlace(array3rd)//[{ num: '39', gr: 'd' }, { num: '40', gr: 'a' }, { num: '44', gr: 'b' }, { num: '42', gr: 'c' }]
 
 if(fillTrd !== undefined){

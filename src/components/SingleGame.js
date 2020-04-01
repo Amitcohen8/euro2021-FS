@@ -24,6 +24,7 @@ const isPenalty = props.scores.penalty[num]
 // const gameIndex = results.findIndex(game=>game.num === props.num);
 // const {isActive} = results[gameIndex].penalty
 const intValidation = "return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));";
+
 const inputValidation = (e) => {
   const {value,name} = e.target
 if(value < 0 || value > 9 || Number.isInteger(value) || isNaN(value)){
@@ -32,7 +33,7 @@ setIsValidG(false)
 } 
 else {
   if(isValidGame === false){setIsValidG(true)}
-  setInput({[name]:value})
+  setInput({...input,[name]:value})
 }
 }
 
@@ -44,18 +45,18 @@ return null
     return Number(value)
   }
 }
+
 const drawValidation= (e,side) =>{
-  
-  const {value,name} = e.target
+  const {value} = e.target
   if(side === 'h'){
   setItMotherFucker(value)
   } else{
   let score = Number(homeInputP)-Number(value);
-  console.log('score',homeInputP)
+  
   
   
    if(score === 0){
-     console.log('draw')
+    
      setIsDraw(true)
    } else{
     setIsDraw(false)
@@ -77,7 +78,9 @@ const drawValidation= (e,side) =>{
      <p><img src={homeFlag} alt="home team flag"/></p>
       <p className="home-team">{home}</p>
       
-      <input type="text" onKeyPress={()=>intValidation}  className="form-control home" name="homeInput" value={homeInput} 
+      <input type="text" 
+        onKeyPress={()=>intValidation} 
+        className="form-control home" name="homeInput"  value={homeInput} 
        onChange={e=>{inputValidation(e)
         
        }} 
@@ -87,7 +90,8 @@ const drawValidation= (e,side) =>{
                                                     evalR16()
                                                     }
                                                    }
-                                                     } />
+                                                     }
+                                                      />
                                                     
       <input type="text" onKeyPress={()=>intValidation} className="form-control away" name="awayInput" value={awayInput} 
         onChange={e=>{inputValidation(e)
@@ -139,7 +143,7 @@ const drawValidation= (e,side) =>{
      : <div/>
     }
     {isDraw ? <p className="validation-comment">Penalty score can't be a draw</p> : <div/>}
-    {!isValidGame? <p className="validation-comment">The value must be between 0 to 9</p> : <div/>}
+    {!isValidGame? <p className="validation-comment">Value must be 0-9</p> : <div/>}
     </>
   )
 }

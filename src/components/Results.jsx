@@ -17,7 +17,7 @@ const Results = (props) => {
     }).sort((a,b) => a.num-b.num)
 
     const showResults = cleanResults.map(item=>{
-      const {penalty,gh,ga,home,away,num} = item
+      const {gh,ga,home,away,num} = item
       const homeFlag = countries[home] ? `https://www.countryflags.io/${countries[home]}/flat/64.png` :  `https://www.countryflags.io/${countries['None']}/flat/64.png`;
       const awayFlag =  countries[away] ? `https://www.countryflags.io/${countries[away]}/flat/64.png` : `https://www.countryflags.io/${countries['None']}/flat/64.png`;
 
